@@ -1,3 +1,5 @@
+import os
+import shutil
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from components.config.chromadb_config import ChromaDB
@@ -11,6 +13,10 @@ app = FastAPI()
 @app.get('/ai/api/update-knowledge')
 async def update_knowledge():
 
+    path = 'chroma_db'
+    if os.path.isdir(path):
+        shutil.rmtree(path)
+        print(f"Folder '{path}' and all its contents removed successfully.")
     embd_model = EmbeddedModel()
 
 
@@ -28,7 +34,7 @@ async def update_knowledge():
 
     print(len(embds))
     print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
-    StoreChunk(data=chunks, embedding=embds)
+    StoreChunk(data=chunks, embedding=embds, db_path=path)
 
     query = "Where are you"
     
