@@ -1,7 +1,7 @@
 from components.config.chromadb_config import ChromaDB
 import uuid
 
-def StoreChunk(data, embedding):
+def StoreChunk(data, embedding, db_path):
 
     print(f"Chunk length {len(data)} and Embedding length {len(embedding)}")
     if len(data) != len(embedding):
@@ -10,7 +10,7 @@ def StoreChunk(data, embedding):
     # client = chromadb.PersistentClient(path="chroma_db")
 
     # collection = client.get_or_create_collection("docx_info")
-    collection = ChromaDB()
+    collection = ChromaDB(db_path=db_path)
     for chunk, emb in zip(data, embedding):
 
         # print(emb.tolist())
