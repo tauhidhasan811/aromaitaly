@@ -48,15 +48,36 @@
 
 
 
-import os
-import shutil
+# import os
+# import shutil
 
-folder_path = "chroma_db"
+# folder_path = "chroma_db"
 
-# Check if the folder exists before attempting to remove it
-if os.path.isdir(folder_path):
-    shutil.rmtree(folder_path)
-    print(f"Folder '{folder_path}' and all its contents removed successfully.")
-else:
-    print(f"Folder '{folder_path}' not found or is not a directory.")
+# # Check if the folder exists before attempting to remove it
+# if os.path.isdir(folder_path):
+#     shutil.rmtree(folder_path)
+#     print(f"Folder '{folder_path}' and all its contents removed successfully.")
+# else:
+#     print(f"Folder '{folder_path}' not found or is not a directory.")
+
+import requests
+
+url = "https://www.beds24.com/api/json/getPropertyContent"
+
+payload = {
+    "authentication": {
+        "apiKey": "h12j3123h123j28z",
+        "propKey": "Joybeach8754h6fdr5"
+    },
+    "texts": ["EN"]
+}
+
+headers = {
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+
+print(response.status_code)
+print(response.json())
 
