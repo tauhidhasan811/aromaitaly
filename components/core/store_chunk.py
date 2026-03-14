@@ -1,0 +1,43 @@
+import chromadb
+import uuid
+
+def StoreChunk(data, embedding):
+
+    print(f"Chunk length {len(data)} and Embedding length {len(embedding)}")
+    if len(data) != len(embedding):
+        raise ValueError("Chunks and embeddings length mismatch")
+
+    client = chromadb.PersistentClient(path="chroma_db")
+
+    collection = client.get_or_create_collection("docx_info")
+
+    for chunk, emb in zip(data, embedding):
+
+        collection.add(
+            documents=[chunk],
+            embeddings=[emb.tolist()],
+            ids=[str(uuid.uuid4())]
+        )
+
+    print("Stored:", len(data))
+
+# import chromadb
+# import uuid
+
+# def StoreChunk(data, embedding):
+
+#     client = chromadb.PersistentClient(path="chroma_db")
+
+#     collection = client.get_or_create_collection(
+#         name="docx_info"
+#     )
+
+#     for idx, chunk in enumerate(data):
+
+#         collection.add(
+#             documents=[chunk],
+#             embeddings=[embedding[idx].tolist()],
+#             ids=[str(uuid.uuid4())]
+#         )
+
+#     print("Chunks stored successfully")
