@@ -6,8 +6,12 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "chromadb>=1.5.5",
+    "dotenv>=0.9.9",
+    "fastapi[standard]>=0.135.1",
     "langchain>=1.2.12",
+    "langchain-openai>=1.1.11",
     "langchain-text-splitters>=1.1.1",
+    "loadenv>=0.1.1",
     "python-docx>=1.2.0",
     "sentence-transformers>=5.3.0",
 ]
