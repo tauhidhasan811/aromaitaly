@@ -5,5 +5,5 @@ def ReadDocx(path):
 
     text_data = ""
     for p in doc.paragraphs:
-        text_data = text_data+ p.text
+        text_data += " " + p.text
     return text_data

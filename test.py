@@ -1,26 +1,19 @@
-
-
-from components.core.file_reader import ReadDocx
-from components.config.chunk_config import CreatChunk
+from components.config.chromadb_config import ChromaDB
 from components.config.embd_model import EmbeddedModel
-from components.core.store_chunk import StoreChunk
 
-path = 'AI Website Bot notes JBV.docx'
+query = "Where are you"
+model = EmbeddedModel()
 
-data = ReadDocx(path)
-print('*' * 100)
-# print(data)
-print('*' * 100)
+embd = model.encode(query)
 
-chunks = CreatChunk(data=data)
-print('-' * 100)
-print(len(chunks))
-print('-' * 100)
-# print(chunks)
+collection = ChromaDB()
 
-embds = EmbeddedModel().encode(chunks)
+results = collection.query(
+    query_embeddings=[embd.tolist()],
+    n_results=3
+)
 
-print(len(embds))
-print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
-StoreChunk(data=chunks, embedding=embds)
+print(results)
 
+# data = collection.get(include=["documents", "embeddings"])
+# print(len(data["embeddings"]))

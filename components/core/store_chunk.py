@@ -1,4 +1,4 @@
-import chromadb
+from components.config.chromadb_config import ChromaDB
 import uuid
 
 def StoreChunk(data, embedding):
@@ -7,15 +7,16 @@ def StoreChunk(data, embedding):
     if len(data) != len(embedding):
         raise ValueError("Chunks and embeddings length mismatch")
 
-    client = chromadb.PersistentClient(path="chroma_db")
+    # client = chromadb.PersistentClient(path="chroma_db")
 
-    collection = client.get_or_create_collection("docx_info")
-
+    # collection = client.get_or_create_collection("docx_info")
+    collection = ChromaDB()
     for chunk, emb in zip(data, embedding):
 
+        # print(emb.tolist())
         collection.add(
             documents=[chunk],
-            embeddings=[emb.tolist()],
+            embeddings=[emb],
             ids=[str(uuid.uuid4())]
         )
 
