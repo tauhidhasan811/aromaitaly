@@ -61,15 +61,11 @@ async def update_knowledge():
     path = 'AI Website Bot notes JBV.docx'
     data = ReadDocx(path)
 
-    print("Start geting room information")
     room_info = str(GetRoomInformation())
     room_info = re.sub(r"[\[\]']", "", room_info)
-    print("Finish geting room information")
-    chunks = CreatChunk(data=data)
-    print('-' * 60)
 
-    print(len(chunks))
-    print('-' * 60)
+    chunks = CreatChunk(data=data)
+  
     # print(chunks)
     chunks.append(str(room_info))
     print(room_info)
@@ -88,53 +84,15 @@ async def update_knowledge():
 
     # print(results)
     return "Store Successfully"
-# @app.post('/ai/api/check')
-# async def Check(user_prompt: str):
-
-#     db_path = 'db/chroma_db'
-    
-#     embd = embd_model.encode(user_prompt)
-
-#     collection = ChromaDB(db_path=db_path)
-
-
-#     results = collection.query(
-#         query_embeddings=[embd.tolist()],
-#         n_results=1
-#     )
-
-#     context = format_retrieved_context(results)
-
-
-#     agent = CreateAgent()
-#     response = agent.invoke({
-#         "messages": [
-#             {
-#                 "role": "user",
-#                 "content": f"""
-#                 User Query:
-#                 {user_prompt}
-
-#                 Relevant Information:
-#                 {context}
-#                 """
-#                             }
-#                         ]
-#                     })
-#     # print(response)
-
-#     ai_response = response["messages"][-1].content
-
-#     print(ai_response)
-#     return ai_response
 
 
 @app.post('/ai/api/check')
-async def Check(user_prompt: str = Form()):
+async def Check(user_query: str = Form(),
+                prev_info: str = Form()):
 
     db_path = 'db/chroma_db'
     
-    embd = embd_model.encode(user_prompt)
+    embd = embd_model.encode(user_query)
 
     collection = ChromaDB(db_path=db_path)
 
@@ -146,7 +104,9 @@ async def Check(user_prompt: str = Form()):
 
     context = format_retrieved_context(results)
 
-    prompt = RAGPrompt(user_query=user_prompt, relevant_information=context)
+    prompt = RAGPrompt(user_query=user_query, 
+                       previous_information=prev_info,
+                       relevant_information=context)
 
     response = model.invoke(prompt).content
 

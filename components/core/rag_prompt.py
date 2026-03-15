@@ -1,15 +1,15 @@
 from langchain.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import PromptTemplate
 
-def RAGPrompt(user_query, relevant_information):
+def RAGPrompt(user_query, previous_information, relevant_information):
     sys_message = SystemMessage(
         content="""You are a RAG AI assistant.
-                 Use the previous Information and provided relevant information to answer the user.
+                 Response is but be depand on the previous Information and provided relevant information to answer the user.
                  Answer will be short and spacific you are a faq page do not give faq
                  
                  Rules:
                  - Answer must be well organize and as assiestent do not give unnecessary word.
-                 - Answer insert inside proper html tag just tag like <h2>, <h3>, <p>, <li>< <td>, <tr> ...
+                 - Answer insert inside proper html tag just tag like <h2>, <h3>, <p>, <li>< <td><br> not \n, <tr> ...
                  - Do NOT hallucinate.
                  - If the answer is not in the relevant information, say sorry and suggest contacting customer support.
                  - Joy Beach Villas Email: reception@joybeachvillas.com
@@ -19,7 +19,7 @@ def RAGPrompt(user_query, relevant_information):
     )
 
     hum_message = HumanMessage(
-        content=f"User Query: {user_query}\n\nRelevant Information: {relevant_information}"
+        content=f"User Query: {user_query}|n|n Previous Information {previous_information}\n\nRelevant Information: {relevant_information}"
     )
 
     temp = PromptTemplate(
