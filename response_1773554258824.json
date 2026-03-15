@@ -1,0 +1,60 @@
+{
+  "messages": [
+    {
+      "content": "\n            User Query: hi\n\n            Relevant Information:\n            {'ids': [['70b40bb3-b89a-4d29-936f-3a6b057952ed']], 'embeddings': None, 'documents': [['out to us through the contact methods above, and we will be happy to assist you. Frequently Asked Questions (FAQs) Joy Beach Villas Common Queries: https://www.joybeachvillas.com/faq Social Media Links Follow Us: Stay connected and updated with Joy Beach Villas on social media: Instagram:\\xa0@joy_beach_villas Facebook:\\xa0www.facebook.com/thejoy.kpg We look forward to sharing our latest news, offers, and beautiful moments with you!']], 'uris': None, 'included': ['metadatas', 'documents', 'distances'], 'data': None, 'metadatas': [[None]], 'distances': [[1.0352256298065186]]}\n            ",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "type": "human",
+      "name": null,
+      "id": "24de67cb-4c00-482d-b968-8d2024107c2a"
+    },
+    {
+      "content": "Hello! How can I assist you today? If you have any questions about Joy Beach Villas, you can also check our FAQ page: https://www.joybeachvillas.com/faq\n\nFor direct assistance, you can contact us by email at reception@joybeachvillas.com or via WhatsApp at +66 62 4080324 (available 8 AM – 5 PM Thailand time). Let me know how I can help!",
+      "additional_kwargs": {
+        "refusal": null
+      },
+      "response_metadata": {
+        "token_usage": {
+          "completion_tokens": 93,
+          "prompt_tokens": 352,
+          "total_tokens": 445,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        },
+        "model_provider": "openai",
+        "model_name": "gpt-4.1-2025-04-14",
+        "system_fingerprint": "fp_916b57f645",
+        "id": "chatcmpl-DJYlVGGfarb3QqIcGhRGWU7st95fC",
+        "service_tier": "default",
+        "finish_reason": "stop",
+        "logprobs": null
+      },
+      "type": "ai",
+      "name": null,
+      "id": "lc_run--019cf012-4b61-7f50-8136-84a50126cab6-0",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 352,
+        "output_tokens": 93,
+        "total_tokens": 445,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      }
+    }
+  ]
+}

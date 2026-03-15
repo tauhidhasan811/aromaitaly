@@ -28,23 +28,14 @@ def GetRoomContent():
 # @tool
 def GetRoomInformation():
     """
-    Get property description from Beds24
+    Get property description from Beds24 relevant information about room, villa
     """
-
     data = GetRoomContent()
-
     room_data = data['getPropertyContent'][0]['roomIds']
 
-    # print(room_data)
-    room_ids = []
-    for k, v in room_data.items():
-        room_ids.append(int(k))
+    room_ids = [int(k) for k in room_data.keys()]
 
-    # print(room_ids)
-
-        
     url = "https://www.beds24.com/api/json/getPropertyContent"
-
     payload = {
         "authentication": {
             "apiKey": os.environ.get("beds24_apiKey"),
@@ -55,6 +46,5 @@ def GetRoomInformation():
 
     response = requests.post(url, json=payload)
     response = response.json()
-    print(response)
-    response = response['getPropertyContent'][0]['roomIds']
-    return response
+    # return the relevant room data
+    return response['getPropertyContent'][0]['roomIds']

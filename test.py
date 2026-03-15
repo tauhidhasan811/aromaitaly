@@ -104,8 +104,27 @@ from components.asset.beds24 import GetRoomContent, GetRoomInformation
 
 room_info = GetRoomInformation()
 
+print(str(room_info))
 
-print(room_info)
+
+# print(room_info)
 # with open('room_data.json', 'w', encoding='utf-8') as f:
 #     json.dump(room_info['getPropertyContent'][0]['roomIds'], f, indent=4)
+
+
+# from components.config.openai_model import LoadGPT
+# from dotenv import load_dotenv
+
+# load_dotenv()
+# model = LoadGPT()
+
+# print(model.invoke("Hi"))
+
+# with open('response_1773554258824.json', 'r' ,encoding='utf-8') as f:
+
+#     data = json.load(f)
+
+
+# print(data['messages'][1]['content'])
+
 
