@@ -1,0 +1,225 @@
+{
+    "getPropertyContent": [
+        {
+            "propId": "150956",
+            "bookingCutOffHour": "24",
+            "bookingType": "3",
+            "bookingNearTypeDays": "30",
+            "bookingNearType": "6",
+            "bookingExceptType": "4",
+            "bookingExceptTypeStart": "2009-01-01",
+            "bookingExceptTypeEnd": "2009-01-01",
+            "bookingRequestStatus": "0",
+            "depositNonPayment": "1",
+            "depositPercent1": "30",
+            "depositPercent2": "100",
+            "depositFixed1": "0.00",
+            "depositFixed2": "0.00",
+            "paymentGatewayAgodapayEnable": "0",
+            "paymentGatewayAsiapayEnable": "0",
+            "paymentGatewayAuthorizenetEnable": "0",
+            "paymentGatewayBitpayEnable": "0",
+            "paymentGatewayBorgunEnable": "0",
+            "paymentGatewayCreditcardEnable": "0",
+            "paymentGatewayCustomgatewayEnable": "0",
+            "paymentGatewayGlobalpayments1Enable": "0",
+            "paymentGatewayGlobalpayments2Enable": "0",
+            "paymentGatewayOfflinepaymentEnable": "0",
+            "paymentGatewayPaymillEnable": "0",
+            "paymentGatewayPaypalEnable": "0",
+            "paymentGatewayStripeEnable": "10",
+            "cardRequireCVV": "1",
+            "cardAcceptAmex": "1",
+            "cardAcceptDiners": "1",
+            "cardAcceptDiscover": "1",
+            "cardAcceptEnroute": "0",
+            "cardAcceptJcb": "0",
+            "cardAcceptMaestro": "1",
+            "cardAcceptMaster": "1",
+            "cardAcceptUnionpay": "1",
+            "cardAcceptVisa": "1",
+            "cardAcceptVoyager": "1",
+            "checkInStartHour": "14",
+            "checkInEndHour": "17",
+            "checkOutEndHour": "11",
+            "name": "Joy Beach Villas",
+            "permit": "0845561008563",
+            "roomChargeDisplay": "0",
+            "groupKeywords": "",
+            "sellPriority": "100",
+            "offerType": "room",
+            "bookingPageMultiplier": "",
+            "oneTimeVouchers": "",
+            "discountVoucherCode": {
+                "1": {
+                    "phrase": "DIRECTB",
+                    "amount": "10.00",
+                    "type": "1"
+                },
+                "2": {
+                    "phrase": "MARKU01,CHRIS01,MADLI01,MONIK01,CHRIS02",
+                    "amount": "5.00",
+                    "type": "1"
+                },
+                "3": {
+                    "phrase": "LTSTAY",
+                    "amount": "20.00",
+                    "type": "1"
+                },
+                "4": {
+                    "phrase": "AUTUMNSS24",
+                    "amount": "30.00",
+                    "type": "0"
+                },
+                "5": {
+                    "phrase": "REBOOKING",
+                    "amount": "15.00",
+                    "type": "1"
+                },
+                "6": {
+                    "phrase": "IGVOUCHER2025",
+                    "amount": "10.00",
+                    "type": "1"
+                },
+                "7": {
+                    "phrase": "NOMAD25",
+                    "amount": "70.00",
+                    "type": "0"
+                },
+                "8": {
+                    "phrase": "",
+                    "amount": "5.00",
+                    "type": "0"
+                }
+            },
+            "featureCodes": [],
+            "texts": {
+                "propertyDescription1": {
+                    "EN": "The JOY Beach Villas are located directly at Hin Kong Beach in Koh Phangan!<br />\u200b<br />Imagine a tropical green garden landscape surrounded by palm trees and lush green trees, directly with a perfect view of the sunset &ndash; in the JOY tradition meets modernity!"
+                },
+                "propertyDescription2": {
+                    "EN": ""
+                },
+                "propertyDescriptionBookingPage1": {
+                    "EN": ""
+                },
+                "propertyDescriptionBookingPage2": {
+                    "EN": ""
+                },
+                "guestDetailsHeader": {
+                    "EN": ""
+                },
+                "guestEnquiryHeader": {
+                    "EN": ""
+                },
+                "confirmBookingButtonMessage": {
+                    "EN": ""
+                },
+                "roomNotAvailableMessage": {
+                    "EN": ""
+                },
+                "roomNoPriceMessage": {
+                    "EN": ""
+                },
+                "noRoomsAvailableMessage": {
+                    "EN": ""
+                },
+                "generalPolicy": {
+                    "EN": "General Terms and Conditions\r\n\r\nPlease read these Terms and Conditions carefully as these conditions incorporate the basis on which bookings for the Joy Beach Villa are accepted. \r\nWe may revise these Terms and Conditions from time to time by updating this posting. The revised terms will take effect when they are posted. \r\n\r\nEarly Check-Out\r\nThe property reserves the right to charge an early departure fee in the event a guest departs earlier than the original departure date.\r\n\r\nLate Check-Out\r\nOn request. Please contact the front office of each property. Additional fees may apply.\r\n\r\nDeposit & Payment Policy\r\n\r\nA deposit of 30% of the booking value is required to confirm your booking.\r\nRemaining payment is required 30 days before arrival.\r\nFor reservations with arrival dates less than 30 days away, full payment is required to confirm your booking.\r\n\r\nDamage Deposit\r\n\r\nUpon checking in, Joy Beach Villas requires a deposit of 20% of your booking value in cash (with a minimum of 5,000THB) or a passport. At check out date, after the Villa is inspected and found to be damage-free, the deposit will be refunded."
+                },
+                "cancellationPolicy": {
+                    "EN": "Cancellation Policy\r\n\r\nEach rate booked at Joy Beach Villas is subject to our Cancellation Policy as detailed below:\r\n\r\n1. If a booking is cancelled up to 31 days before the arrival date, the upfront payment will not be refunded.\r\n\r\n2. Booking cancellation less than 31 days prior to arrival date, no refund will be issued.\r\n\r\n3. No show, no refund will be issued.\r\n\r\n4. In case of a change in arrival date to a further date, no refund will be issued.\r\n\r\n5. In case of early check-out, no refund will be issued.\r\n\r\nWe reserve the right to cancel or modify reservations under the circumstances where it appears that a customer has provided an invalid credit card, engaged in fraudulent or inappropriate activity. \r\nIn addition, we also reserve the right to cancel or amend bookings if they do not adhere to our Terms and Conditions.\r\n\r\nAs a condition of using Joy Beach Villas booking method, you agree to provide proof of payment to Joy Beach Villas within 48 hours of the time of booking and will indicate the reservation confirmation number on the proof of payment. You will be fully responsible for any banking fees and/or costs required to complete the bank fund transaction(s). Furthermore, you acknowledge that the reservation may be cancelled by Joy Beach Villas if proof of payment is not submitted within the 48-hour notice period.\r\n\r\nRelocation\r\n\r\nIn the rare unexpected event whereby the property cannot provide accommodation as previously confirmed, the property will comply with its standard of obligation by undertaking to relocate guests into an alternative property of equal or better grading at no expense to the guest. Should there not be a property of equal or better grading in the vicinity of the original booking, it may be required to provide guests with a property of a lesser grading. If this is the case, any reduction in costs will be refunded to the guest.\r\nThe alternatives offered are at the property\u2019s discretion. Should the guest wish to choose a property of a standard other than offered under this condition, then the guest will be required to pay any difference.\r\n\r\nLimitation of Liability\r\n\r\nNotwithstanding anything contained in these Terms and Conditions to the contrary, The Joy Beach Villas shall not be responsible for indirect damage, damage arising from consequential damage or special circumstances, including but not limited to loss of revenue, loss of profit, loss of use, loss of opportunity, arisen out of the performance or non-performance of obligations under these Terms and Conditions.\r\n\r\nInsurance\r\n\r\nThe Joy Beach Villas strongly recommends you purchase Comprehensive Travel Insurance. We suggest that the policy include, but not be limited to, the following coverage \u2013 loss of payment through cancellation, loss or damage to personal baggage, loss of money and medical expenses.\r\n\r\nGoverning Law & Jurisdiction\r\nThis site is operated from Thailand and it is governed by the laws of Thailand"
+                },
+                "locationDescription": {
+                    "EN": ""
+                },
+                "headlineText": {
+                    "EN": ""
+                },
+                "propertyDescriptionText": {
+                    "EN": ""
+                },
+                "houseRules": {
+                    "EN": ""
+                },
+                "directions": {
+                    "EN": ""
+                },
+                "offers": {
+                    "9": {
+                        "name": {
+                            "EN": null
+                        },
+                        "description1": {
+                            "EN": null
+                        },
+                        "description2": {
+                            "EN": null
+                        },
+                        "marketingColumn": {
+                            "EN": null
+                        }
+                    }
+                }
+            },
+            "roomIds": {
+                "334679": {
+                    "roomId": "334679",
+                    "name": "Beachfront Villa"
+                },
+                "336039": {
+                    "roomId": "336039",
+                    "name": "Deluxe Garden Villa"
+                },
+                "336040": {
+                    "roomId": "336040",
+                    "name": "Garden Villa 1"
+                },
+                "342568": {
+                    "roomId": "342568",
+                    "name": "Garden Villa 2"
+                },
+                "342569": {
+                    "roomId": "342569",
+                    "name": "Garden Villa 3"
+                },
+                "342570": {
+                    "roomId": "342570",
+                    "name": "Garden Villa 4"
+                },
+                "342571": {
+                    "roomId": "342571",
+                    "name": "Garden Villa 5"
+                },
+                "352148": {
+                    "roomId": "352148",
+                    "name": "Garden Pool Villa 1"
+                },
+                "352154": {
+                    "roomId": "352154",
+                    "name": "Garden Pool Villa 2"
+                },
+                "352156": {
+                    "roomId": "352156",
+                    "name": "Garden Pool Villa 3"
+                },
+                "352157": {
+                    "roomId": "352157",
+                    "name": "Garden Pool Villa 4"
+                },
+                "363730": {
+                    "roomId": "363730",
+                    "name": "Garden Pool Villa 5"
+                },
+                "363731": {
+                    "roomId": "363731",
+                    "name": "Garden Pool Villa 6"
+                },
+                "642098": {
+                    "roomId": "642098",
+                    "name": "Room 14"
+                }
+            }
+        }
+    ]
+}
