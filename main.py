@@ -1,18 +1,25 @@
 import os
 import re
 import shutil
-from fastapi import FastAPI
+from fastapi import FastAPI, Form
 from dotenv import load_dotenv
 from components.config.chromadb_config import ChromaDB
 from components.core.file_reader import ReadDocx
 from components.core.chunk_config import CreatChunk
 from components.config.embd_model import EmbeddedModel
 from components.core.store_chunk import StoreChunk
-from components.config.agent import CreateAgent
+# from components.config.agent import CreateAgent
 from components.asset.beds24 import GetRoomInformation
+from components.config.openai_model import LoadGPT
+from components.core.rag_prompt import RAGPrompt
+
+
 load_dotenv()
+model = LoadGPT()
 app = FastAPI()
 embd_model = EmbeddedModel()
+
+
 def format_retrieved_context(results):
     documents = results.get("documents", [[]])
     metadatas = results.get("metadatas", [[]])
@@ -81,8 +88,49 @@ async def update_knowledge():
 
     # print(results)
     return "Store Successfully"
+# @app.post('/ai/api/check')
+# async def Check(user_prompt: str):
+
+#     db_path = 'db/chroma_db'
+    
+#     embd = embd_model.encode(user_prompt)
+
+#     collection = ChromaDB(db_path=db_path)
+
+
+#     results = collection.query(
+#         query_embeddings=[embd.tolist()],
+#         n_results=1
+#     )
+
+#     context = format_retrieved_context(results)
+
+
+#     agent = CreateAgent()
+#     response = agent.invoke({
+#         "messages": [
+#             {
+#                 "role": "user",
+#                 "content": f"""
+#                 User Query:
+#                 {user_prompt}
+
+#                 Relevant Information:
+#                 {context}
+#                 """
+#                             }
+#                         ]
+#                     })
+#     # print(response)
+
+#     ai_response = response["messages"][-1].content
+
+#     print(ai_response)
+#     return ai_response
+
+
 @app.post('/ai/api/check')
-async def Check(user_prompt: str):
+async def Check(user_prompt: str = Form()):
 
     db_path = 'db/chroma_db'
     
@@ -98,25 +146,8 @@ async def Check(user_prompt: str):
 
     context = format_retrieved_context(results)
 
+    prompt = RAGPrompt(user_query=user_prompt, relevant_information=context)
 
-    agent = CreateAgent()
-    response = agent.invoke({
-        "messages": [
-            {
-                "role": "user",
-                "content": f"""
-                User Query:
-                {user_prompt}
+    response = model.invoke(prompt).content
 
-                Relevant Information:
-                {context}
-                """
-                            }
-                        ]
-                    })
-    # print(response)
-
-    ai_response = response["messages"][-1].content
-
-    print(ai_response)
-    return ai_response
+    return response
