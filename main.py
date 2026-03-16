@@ -34,7 +34,7 @@ app.add_middleware(
 )
 embd_model = EmbeddedModel()
 
-
+pool = embd_model.start_multi_process_pool()
 
 
 def clean_text(text):
@@ -68,7 +68,10 @@ async def update_knowledge():
         # print(room_info)
         with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
             json.dump(chunks, f, indent=4)
-        embds = embd_model.encode(chunks)
+        # embds = embd_model.encode(chunks)
+        embds = embd_model.encode_multi_process( chunks, pool )
+
+        embd_model.stop_multi_process_pool(pool)
 
         # print(embds[0])
         print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
@@ -115,10 +118,10 @@ async def Check(data : ChatBody):
             query_embeddings=[embd.tolist()],
             n_results=1
         )
-        print(results)
+        # print(results)
 
         context = format_retrieved_context(results)
-        print(context)
+        # print(context)
         prompt = RAGPrompt(user_query=data.user_query, 
                         previous_information=data.prev_info,
                         relevant_information=context)
