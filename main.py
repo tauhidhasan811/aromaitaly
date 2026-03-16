@@ -59,12 +59,12 @@ async def update_knowledge():
         room_info = GetAllVilla()
         print(room_info)
         # room_info = re.sub(r"[\[\]']", "", room_info)
-        # room_info = CleanVillaData(room_info)
+        room_info = CleanVillaData(room_info)
 
         
 
         chunks.extend(room_info)
-        print(room_info)
+        # print(room_info)
         with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
             json.dump(chunks, f, indent=4)
         embds = embd_model.encode(chunks)
