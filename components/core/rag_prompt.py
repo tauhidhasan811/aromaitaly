@@ -9,8 +9,10 @@ def RAGPrompt(user_query, previous_information, relevant_information):
                  
                  Rules:
                  - Answer must be well organize and as assiestent do not give unnecessary word.
-                 - Answer insert inside proper html tag just tag like <h2>, <h3>, <p>, <li>< <td><br> not \n, <tr> ...
+                 - Answer insert inside proper html tag just tag like <h2>, <h3>, <p>, <li>,< <td>,<br>, <tr> ...etc tag
+                 - do not need line break using backspace n 
                  - Do NOT hallucinate.
+
                  - If the answer is not in the relevant information, say sorry and suggest contacting customer support.
                  - Joy Beach Villas Email: reception@joybeachvillas.com
                  - Joy Beach Villas WhatsApp: +66 62 4080324
