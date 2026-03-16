@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 from fastapi import FastAPI, Form
+from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from components.config.chromadb_config import ChromaDB
 from components.core.file_reader import ReadDocx
@@ -43,71 +44,106 @@ def format_retrieved_context(results):
 
     return "\n\n---\n\n".join(formatted_chunks)
 
+def clean_text(text):
+    return " ".join(text.split()).strip()
 
 @app.get('/ai/api/update-knowledge')
 async def update_knowledge():
+    try:
 
-    db_path = 'db/chroma_db'
-    # embd_model = EmbeddedModel()
+        db_path = 'db/chroma_db'
+        # embd_model = EmbeddedModel()
 
 
-    if os.path.isdir(db_path):
-        shutil.rmtree(db_path)
-        print(f"Folder '{db_path}' and all its contents removed successfully.")
-    else:
-        print("No previous data")
-        os.makedirs(db_path, exist_ok=True)
+        if os.path.isdir(db_path):
+            shutil.rmtree(db_path)
+            print(f"Folder '{db_path}' and all its contents removed successfully.")
+        else:
+            print("No previous data")
+            os.makedirs(db_path, exist_ok=True)
 
-    path = 'AI Website Bot notes JBV.docx'
-    data = ReadDocx(path)
+        path = 'AI Website Bot notes JBV.docx'
+        data = ReadDocx(path)
 
-    room_info = str(GetRoomInformation())
-    room_info = re.sub(r"[\[\]']", "", room_info)
+        room_info = str(GetRoomInformation())
+        room_info = re.sub(r"[\[\]']", "", room_info)
 
-    chunks = CreatChunk(data=data)
-  
-    # print(chunks)
-    chunks.append(str(room_info))
-    print(room_info)
-    print('-' * 60)
+        chunks = CreatChunk(data=data)
 
-    print(len(chunks))
-    print('-' * 60)
-    print("Start embedding")
-    embds = embd_model.encode(chunks)
+        chunks.append(str(room_info))
+        print(room_info)
+        embds = embd_model.encode(chunks)
 
-    # print(embds[0])
-    print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
-    StoreChunk(data=chunks, embedding=embds, db_path=db_path)
+        # print(embds[0])
+        print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
+        StoreChunk(data=chunks, embedding=embds, db_path=db_path)
 
-    
+        response = JSONResponse(
+            status_code=200,
+            content={
+                'status': True,
+                'status_code': 200,
+                'text': "Store Successfully"
+            }
+        )
+        return response
 
-    # print(results)
-    return "Store Successfully"
+    except Exception as ex:
+        response = JSONResponse(
+            status_code=500,
+            content={
+                'status': False,
+                'status_code': 500,
+                'text': str(ex)
+            }
+        )
+        return response
 
 
 @app.post('/ai/api/check')
 async def Check(user_query: str = Form(),
                 prev_info: str = Form()):
-
-    db_path = 'db/chroma_db'
     
-    embd = embd_model.encode(user_query)
 
-    collection = ChromaDB(db_path=db_path)
+    try:
+        db_path = 'db/chroma_db'
+        
+        embd = embd_model.encode(user_query)
+
+        collection = ChromaDB(db_path=db_path)
 
 
-    results = collection.query(
-        query_embeddings=[embd.tolist()],
-        n_results=1
-    )
+        results = collection.query(
+            query_embeddings=[embd.tolist()],
+            n_results=1
+        )
 
-    context = format_retrieved_context(results)
+        context = format_retrieved_context(results)
 
-    prompt = RAGPrompt(user_query=user_query, 
-                       previous_information=prev_info,
-                       relevant_information=context)
+        prompt = RAGPrompt(user_query=user_query, 
+                        previous_information=prev_info,
+                        relevant_information=context)
 
-    response = model.invoke(prompt).content
+        text = model.invoke(prompt).content
+        text = clean_text(text)
 
-    return response
+        response = JSONResponse(
+            status_code=200,
+            content={
+                'status': True,
+                'status_code': 200,
+                'text': text
+            }
+        )
+        return response
+
+    except Exception as ex:
+        response = JSONResponse(
+            status_code=500,
+            content={
+                'status': False,
+                'status_code': 500,
+                'text': str(ex)
+            }
+        )
+        return response
