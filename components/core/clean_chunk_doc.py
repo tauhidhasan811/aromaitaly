@@ -25,10 +25,13 @@ def format_retrieved_context(results):
 
 def CleanVillaData(data: list):
     clean_data = []
+
     pattern = re.compile(r"[\[\]\{\}']")
 
     for item in data:
+        print(item)
         text = str(item)
+        clean_data.append(text)
         cleaned = pattern.sub("", text)
         clean_data.append(cleaned)
 
