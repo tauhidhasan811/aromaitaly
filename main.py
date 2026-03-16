@@ -14,7 +14,7 @@ from components.core.store_chunk import StoreChunk
 from components.asset.beds24 import GetRoomInformation
 from components.config.openai_model import LoadGPT
 from components.core.rag_prompt import RAGPrompt
-
+from schema.chat_model import ChatBody
 
 load_dotenv()
 model = LoadGPT()
@@ -109,15 +109,17 @@ async def update_knowledge():
         return response
 
 
-@app.post('/ai/api/check')
-async def Check(user_query: str = Form(),
-                prev_info: str = Form()):
+@app.post('/ai/api/chat-bot')
+# async def Check(user_query: str = Form(),
+#                 prev_info: str = Form()):
+    
+async def Check(data : ChatBody):
     
 
     try:
         db_path = 'db/chroma_db'
         
-        embd = embd_model.encode(user_query)
+        embd = embd_model.encode(data.user_query)
 
         collection = ChromaDB(db_path=db_path)
 
@@ -129,8 +131,8 @@ async def Check(user_query: str = Form(),
 
         context = format_retrieved_context(results)
 
-        prompt = RAGPrompt(user_query=user_query, 
-                        previous_information=prev_info,
+        prompt = RAGPrompt(user_query=data.user_query, 
+                        previous_information=data.prev_info,
                         relevant_information=context)
 
         text = model.invoke(prompt).content
