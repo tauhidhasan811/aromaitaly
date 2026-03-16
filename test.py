@@ -82,7 +82,7 @@
 # print(response.json())
 
 import json
-from components.asset.beds24 import GetRoomContent, GetRoomInformation
+# from components.asset.beds24 import GetRoomContent, GetRoomInformation
 
 # # data = GetRoomContent()
 
@@ -102,9 +102,9 @@ from components.asset.beds24 import GetRoomContent, GetRoomInformation
 
 # print(room_ids)
 
-room_info = GetRoomInformation()
+# room_info = GetRoomInformation()
 
-print(str(room_info))
+# print(str(room_info))
 
 
 # print(room_info)
@@ -127,4 +127,10 @@ print(str(room_info))
 
 # print(data['messages'][1]['content'])
 
+import json
 
+with open('room_data.json', 'r') as f:
+    file = json.load(f)
+
+for k, v in file.items():
+    print(v)
