@@ -11,11 +11,12 @@ from components.core.chunk_config import CreatChunk
 from components.config.embd_model import EmbeddedModel
 from components.core.store_chunk import StoreChunk
 # from components.config.agent import CreateAgent
-from components.asset.beds24 import GetRoomInformation
+# from components.asset.beds24 import GetRoomInformation
 from components.config.openai_model import LoadGPT
 from components.core.rag_prompt import RAGPrompt
 from schema.chat_model import ChatBody
-
+from components.asset.get_all_villa import GetAllVilla
+from components.core.clean_chunk_doc import format_retrieved_context, CleanVillaData
 load_dotenv()
 model = LoadGPT()
 app = FastAPI()
@@ -30,28 +31,7 @@ app.add_middleware(
 embd_model = EmbeddedModel()
 
 
-def format_retrieved_context(results):
-    documents = results.get("documents", [[]])
-    metadatas = results.get("metadatas", [[]])
 
-    docs = documents[0] if documents else []
-    metas = metadatas[0] if metadatas else []
-
-    if not docs:
-        return "No relevant information found."
-
-    formatted_chunks = []
-
-    for i, doc in enumerate(docs):
-        meta = metas[i] if i < len(metas) else {}
-        meta = meta or {}   # important fix
-
-        source = meta.get("source", "unknown")
-        formatted_chunks.append(
-            f"Source: {source}\nContent: {doc}"
-        )
-
-    return "\n\n---\n\n".join(formatted_chunks)
 
 def clean_text(text):
     return " ".join(text.split()).strip()
@@ -61,8 +41,6 @@ async def update_knowledge():
     try:
 
         db_path = 'db/chroma_db'
-        # embd_model = EmbeddedModel()
-
 
         if os.path.isdir(db_path):
             shutil.rmtree(db_path)
@@ -73,13 +51,15 @@ async def update_knowledge():
 
         path = 'AI Website Bot notes JBV.docx'
         data = ReadDocx(path)
-
-        room_info = str(GetRoomInformation())
-        room_info = re.sub(r"[\[\]']", "", room_info)
-
         chunks = CreatChunk(data=data)
+        # room_info = str(GetRoomInformation())
+        room_info = GetAllVilla()
+        # room_info = re.sub(r"[\[\]']", "", room_info)
+        room_info = CleanVillaData(room_info)
 
-        chunks.append(str(room_info))
+        
+
+        chunks.extend(room_info)
         print(room_info)
         embds = embd_model.encode(chunks)
 
