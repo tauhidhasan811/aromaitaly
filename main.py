@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 from fastapi import FastAPI, Form
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from components.config.chromadb_config import ChromaDB
@@ -18,6 +19,14 @@ from components.core.rag_prompt import RAGPrompt
 load_dotenv()
 model = LoadGPT()
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 embd_model = EmbeddedModel()
 
 
