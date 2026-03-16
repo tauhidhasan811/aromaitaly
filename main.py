@@ -1,5 +1,6 @@
 import os
 import re
+import json
 import shutil
 from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,6 +18,8 @@ from components.core.rag_prompt import RAGPrompt
 from schema.chat_model import ChatBody
 from components.asset.get_all_villa import GetAllVilla
 from components.core.clean_chunk_doc import format_retrieved_context, CleanVillaData
+from components.hyperparms import params
+from components.core.delete_path import force_delete_folder
 load_dotenv()
 model = LoadGPT()
 app = FastAPI()
@@ -40,10 +43,10 @@ def clean_text(text):
 async def update_knowledge():
     try:
 
-        db_path = 'db/chroma_db'
-
+        db_path = params['db_path']
         if os.path.isdir(db_path):
-            shutil.rmtree(db_path)
+            # shutil.rmtree(db_path)
+            force_delete_folder(db_path)
             print(f"Folder '{db_path}' and all its contents removed successfully.")
         else:
             print("No previous data")
@@ -54,13 +57,16 @@ async def update_knowledge():
         chunks = CreatChunk(data=data)
         # room_info = str(GetRoomInformation())
         room_info = GetAllVilla()
+        print(room_info)
         # room_info = re.sub(r"[\[\]']", "", room_info)
-        room_info = CleanVillaData(room_info)
+        # room_info = CleanVillaData(room_info)
 
         
 
         chunks.extend(room_info)
         print(room_info)
+        with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
+            json.dump(chunks, f, indent=4)
         embds = embd_model.encode(chunks)
 
         # print(embds[0])
@@ -97,7 +103,7 @@ async def Check(data : ChatBody):
     
 
     try:
-        db_path = 'db/chroma_db'
+        db_path = params['db_path']
         
         embd = embd_model.encode(data.user_query)
 
@@ -108,9 +114,10 @@ async def Check(data : ChatBody):
             query_embeddings=[embd.tolist()],
             n_results=1
         )
+        print(results)
 
         context = format_retrieved_context(results)
-
+        print(context)
         prompt = RAGPrompt(user_query=data.user_query, 
                         previous_information=data.prev_info,
                         relevant_information=context)
