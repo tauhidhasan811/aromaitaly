@@ -8,6 +8,8 @@ def RAGPrompt(user_query, previous_information, relevant_information):
                  Answer will be short and spacific you are a faq page do not give faq
                  user query is most importent if not there say sorry.
                  Rules:
+                 - when user ask about villa give them a villa url formate like "https://armaitoly-website.vercel.app/property/{name (get from data)}/roomId"
+                 - insert this urls on a html tag so that by just clicking user can redirect the page
                  - If the answer is not in the relevant information, say sorry and suggest contacting customer support.
                  - Answer must be well organize and as assiestent do not give unnecessary word.
                  

@@ -73,6 +73,7 @@ def GetAllVilla():
                 field_lists[new_field].append({
                     "proparty": proper,
                     "name": room.get(field_map.get("name", "name")),
+                    "roomId": room.get(field_map.get("roomId", "roomId")),
                     new_field: room.get(new_field)
                 })
     field_lists.update(missed_villaInfo)

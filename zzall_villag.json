@@ -5,76 +5,91 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Beachfront Villa",
+                "roomId": "334679",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "11000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Deluxe Garden Villa",
+                "roomId": "336039",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "14000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 1",
+                "roomId": "336040",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 2",
+                "roomId": "342568",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 3",
+                "roomId": "342569",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 4",
+                "roomId": "342570",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 5",
+                "roomId": "342571",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 1",
+                "roomId": "352148",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 2",
+                "roomId": "352154",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 3",
+                "roomId": "352156",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 4",
+                "roomId": "352157",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 5",
+                "roomId": "363730",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 6",
+                "roomId": "363731",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "9000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Room 14",
+                "roomId": "642098",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": null
             },
             {
                 "proparty": "the_view_villa",
                 "name": "Entire Villa",
+                "roomId": "337089",
                 "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate": "11800.00"
             }
         ]
@@ -85,76 +100,91 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Beachfront Villa",
+                "roomId": "334679",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Deluxe Garden Villa",
+                "roomId": "336039",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 1",
+                "roomId": "336040",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 2",
+                "roomId": "342568",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 3",
+                "roomId": "342569",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 4",
+                "roomId": "342570",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 5",
+                "roomId": "342571",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 1",
+                "roomId": "352148",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 2",
+                "roomId": "352154",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 3",
+                "roomId": "352156",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 4",
+                "roomId": "352157",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 5",
+                "roomId": "363730",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 6",
+                "roomId": "363731",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Room 14",
+                "roomId": "642098",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": null
             },
             {
                 "proparty": "the_view_villa",
                 "name": "Entire Villa",
+                "roomId": "337089",
                 "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee": "0.00"
             }
         ]
@@ -165,76 +195,91 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Beachfront Villa",
+                "roomId": "334679",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Deluxe Garden Villa",
+                "roomId": "336039",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 1",
+                "roomId": "336040",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 2",
+                "roomId": "342568",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 3",
+                "roomId": "342569",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 4",
+                "roomId": "342570",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 5",
+                "roomId": "342571",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 1",
+                "roomId": "352148",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 2",
+                "roomId": "352154",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 3",
+                "roomId": "352156",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 4",
+                "roomId": "352157",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 5",
+                "roomId": "363730",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 6",
+                "roomId": "363731",
                 "securityDeposit/deposit/security_fee/damage_deposit": "5000.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Room 14",
+                "roomId": "642098",
                 "securityDeposit/deposit/security_fee/damage_deposit": null
             },
             {
                 "proparty": "the_view_villa",
                 "name": "Entire Villa",
+                "roomId": "337089",
                 "securityDeposit/deposit/security_fee/damage_deposit": "0.00"
             }
         ]
@@ -245,76 +290,91 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Beachfront Villa",
+                "roomId": "334679",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Deluxe Garden Villa",
+                "roomId": "336039",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 1",
+                "roomId": "336040",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 2",
+                "roomId": "342568",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 3",
+                "roomId": "342569",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 4",
+                "roomId": "342570",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 5",
+                "roomId": "342571",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 1",
+                "roomId": "352148",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 2",
+                "roomId": "352154",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 3",
+                "roomId": "352156",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 4",
+                "roomId": "352157",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 5",
+                "roomId": "363730",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 6",
+                "roomId": "363731",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Room 14",
+                "roomId": "642098",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": null
             },
             {
                 "proparty": "the_view_villa",
                 "name": "Entire Villa",
+                "roomId": "337089",
                 "taxPercent/tax_rate/tax_percentage/tax_percent": "0.00"
             }
         ]
@@ -325,76 +385,91 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Beachfront Villa",
+                "roomId": "334679",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Deluxe Garden Villa",
+                "roomId": "336039",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 1",
+                "roomId": "336040",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 2",
+                "roomId": "342568",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 3",
+                "roomId": "342569",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 4",
+                "roomId": "342570",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 5",
+                "roomId": "342571",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 1",
+                "roomId": "352148",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 2",
+                "roomId": "352154",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 3",
+                "roomId": "352156",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 4",
+                "roomId": "352157",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 5",
+                "roomId": "363730",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 6",
+                "roomId": "363731",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             },
             {
                 "proparty": "joy_beach_villa",
                 "name": "Room 14",
+                "roomId": "642098",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": null
             },
             {
                 "proparty": "the_view_villa",
                 "name": "Entire Villa",
+                "roomId": "337089",
                 "taxPerson/person_tax/tax_per_person/per_person_tax": "0.00"
             }
         ]
@@ -405,6 +480,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Beachfront Villa",
+                "roomId": "334679",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "SITTING_AREA",
@@ -436,6 +512,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Deluxe Garden Villa",
+                "roomId": "336039",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "BATHROOM",
                     "BATH_SHOWER",
@@ -469,6 +546,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 1",
+                "roomId": "336040",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "FIRE_EXTINGUISHER",
@@ -502,6 +580,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 2",
+                "roomId": "342568",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -537,6 +616,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 3",
+                "roomId": "342569",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "FIRE_EXTINGUISHER",
@@ -572,6 +652,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 4",
+                "roomId": "342570",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "FIRE_EXTINGUISHER",
@@ -607,6 +688,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Villa 5",
+                "roomId": "342571",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "FIRE_EXTINGUISHER",
                     "VERANDA",
@@ -638,6 +720,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 1",
+                "roomId": "352148",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -686,6 +769,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 2",
+                "roomId": "352154",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -734,6 +818,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 3",
+                "roomId": "352156",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -782,6 +867,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 4",
+                "roomId": "352157",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -830,6 +916,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 5",
+                "roomId": "363730",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -878,6 +965,7 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Garden Pool Villa 6",
+                "roomId": "363731",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "LIVING_ROOM",
                     "HANGERS",
@@ -926,11 +1014,13 @@
             {
                 "proparty": "joy_beach_villa",
                 "name": "Room 14",
+                "roomId": "642098",
                 "featureCodes/features/amenities/facility_codes/room_features": null
             },
             {
                 "proparty": "the_view_villa",
                 "name": "Entire Villa",
+                "roomId": "337089",
                 "featureCodes/features/amenities/facility_codes/room_features": [
                     "BEDROOM",
                     "BED_KING",
@@ -951,6 +1041,86 @@
                     "BATH_SHOWER",
                     "BATH_TOILET"
                 ]
+            }
+        ]
+    },
+    {
+        "field": "roomId",
+        "data": [
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Beachfront Villa",
+                "roomId": "334679"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Deluxe Garden Villa",
+                "roomId": "336039"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Villa 1",
+                "roomId": "336040"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Villa 2",
+                "roomId": "342568"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Villa 3",
+                "roomId": "342569"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Villa 4",
+                "roomId": "342570"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Villa 5",
+                "roomId": "342571"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Pool Villa 1",
+                "roomId": "352148"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Pool Villa 2",
+                "roomId": "352154"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Pool Villa 3",
+                "roomId": "352156"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Pool Villa 4",
+                "roomId": "352157"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Pool Villa 5",
+                "roomId": "363730"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Garden Pool Villa 6",
+                "roomId": "363731"
+            },
+            {
+                "proparty": "joy_beach_villa",
+                "name": "Room 14",
+                "roomId": "642098"
+            },
+            {
+                "proparty": "the_view_villa",
+                "name": "Entire Villa",
+                "roomId": "337089"
             }
         ]
     },
