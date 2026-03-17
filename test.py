@@ -182,65 +182,90 @@ import json
 from dotenv import load_dotenv
 from components.asset.beds24 import Beds24Data
 from components.hyperparms import params
+from components.hyperparms import params
 load_dotenv()
 
+from components.hyperparms import params
+from dotenv import load_dotenv
+
+load_dotenv()
+from components.asset.get_all_villa import GetAllVilla
+
+# def flatten_feature_codes(feature_codes):
+#     flat_features = []
+
+#     for item in feature_codes:
+#         if isinstance(item, list):
+#             flat_features.extend(item)
+#         else:
+#             flat_features.append(item)
+
+#     return flat_features
 
 
+# def GetAllVilla():
+#     beds24 = Beds24Data()
+#     properties = params["proparty_list"]
+#     fields = params["fields"]
+#     field_map = params["FIELD_MAP"]
 
-def GetAllVilla():
-    beds24 = Beds24Data()
-    properties = params["proparty_list"]
-    fields = params["fields"]
+#     data = []
 
-    data = []
+#     # build grouped output keys using mapped field names
+#     field_lists = {
+#         field_map.get(field, field): []
+#         for field in fields
+#         if field != "name"
+#     }
 
-    field_lists = {field: [] for field in fields if field != "name"}
+#     for proper in properties:
+#         print("-" * 60)
+#         print(" " * 25, proper)
+#         print("-" * 60)
 
-    for proper in properties:
-        print("-" * 60)
-        print(" " * 25, proper)
-        print("-" * 60)
+#         file = beds24.GetRoomInformation(property_name=proper)
 
-        file = beds24.GetRoomInformation(property_name=proper)
+#         for room_key, room_value in file.items():
+#             room = {"proparty": proper}
 
-        for room_key, room_value in file.items():
-            room = {"proparty": proper}
+#             for field in fields:
+#                 # first get value using original source field name
+#                 value = room_value.get(field)
 
-            for field in fields:
-                room[field] = room_value.get(field)
+#                 # special handling for featureCodes
+#                 if field == "featureCodes" and value is not None:
+#                     value = flatten_feature_codes(value)
 
-            if "featureCodes" in room_value:
-                features = []
-                for fec in room_value["featureCodes"]:
-                    if isinstance(fec, list):
-                        features.extend(fec)
-                    else:
-                        features.append(fec)
-                room["features"] = features
+#                 # then rename only the output key
+#                 new_field = field_map.get(field, field)
+#                 room[new_field] = value
 
-            data.append(room)
+#             data.append(room)
 
-            for field in fields:
-                if field == "name":
-                    continue
+#             for field in fields:
+#                 if field == "name":
+#                     continue
 
-                field_lists[field].append({
-                    "proparty": proper,
-                    "name": room.get("name"),
-                    field: room.get(field)
-                })
+#                 new_field = field_map.get(field, field)
 
-    # convert dict → list
-    return [
-        {"field": field, "data": values}
-        for field, values in field_lists.items()
-    ]
+#                 field_lists[new_field].append({
+#                     "proparty": proper,
+#                     "name": room.get(field_map.get("name", "name")),
+#                     new_field: room.get(new_field)
+#                 })
+
+#     data = [
+#         {
+#             "field": field,
+#             "data": values
+#         }
+#         for field, values in field_lists.items()
+#     ]
+
+#     return data
 
 data = GetAllVilla()
-# print(data['cleaningFee'])
-print(len(data))
-# print(data)
-for d in data:
-    print(d)
+
+
 with open('zzall_villag.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, indent=4)
