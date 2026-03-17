@@ -6,7 +6,7 @@ params = {
     'db_path' : 'db/chroma_db',
     'FIELD_MAP' : {
             "name": "name/title/room_name/villa_name",
-            "rackRate": "rackRate/price/base_price/rate/room_rate/standard_rate",
+            "rackRate": "budget/budget_price/rackRate/price/base_price/rate/room_rate/standard_rate",
             "cleaningFee": "cleaningFee/cleaning_fee/cleaning_charge/service_cleaning_fee",
             "securityDeposit": "securityDeposit/deposit/security_fee/damage_deposit",
             "taxPercent": "taxPercent/tax_rate/tax_percentage/tax_percent",

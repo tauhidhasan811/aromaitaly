@@ -88,7 +88,8 @@ class Beds24Data:
 
         villa_info = self.GetVillaInfo(property_name)
         # print(villa_info)
-        room_ids = [int(k) for k in room_data.keys()]
+        room_ids = [int(k) for k in room_data.keys() if k != "642098"]
+        print(room_ids)
         url = params['url']
         payload = {
             "authentication": {
