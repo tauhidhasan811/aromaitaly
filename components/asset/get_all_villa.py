@@ -46,7 +46,7 @@ def GetAllVilla():
         missed_villaInfo = {
             "proparty": villa_info
         }
-        print(missed_villaInfo)
+        # print(missed_villaInfo)
         for room_key, room_value in file.items():
             room = {"proparty": proper}
 

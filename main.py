@@ -1,6 +1,7 @@
 import os
 import re
 import json
+from time import time
 import shutil
 from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,7 +34,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 embd_model = EmbeddedModel()
-
+pool = embd_model.start_multi_process_pool()
 
 
 
@@ -43,7 +44,7 @@ def clean_text(text):
 @app.post('/ai/api/update-knowledge')
 async def update_knowledge():
     try:
-
+        start_time = time()
         db_path = params['db_path']
         if os.path.isdir(db_path):
             # shutil.rmtree(db_path)
@@ -68,7 +69,12 @@ async def update_knowledge():
         # print(room_info)
         with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
             json.dump(chunks, f, indent=4)
-        embds = embd_model.encode(chunks)
+
+
+        # embds = embd_model.encode(chunks)
+        embds = embd_model.encode_multi_process( chunks, pool )
+
+        embd_model.stop_multi_process_pool(pool)
 
         # print(embds[0])
         print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
@@ -82,6 +88,14 @@ async def update_knowledge():
                 'text': "Store Successfully"
             }
         )
+        end_time = time()
+        minu = (end_time-start_time) // 60
+        sec = (end_time-start_time) % 60
+        print('*'* 80)
+        print(' '*10, f"Total time take {minu} minutes and {sec} secound")
+        print('*'* 80)
+
+        
         return response
 
     except Exception as ex:
