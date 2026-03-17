@@ -33,7 +33,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-embd_model = EmbeddedModel()
+embd_model = EmbeddedModel(model_name="BAAI/bge-small-en")
 pool = embd_model.start_multi_process_pool()
 
 
