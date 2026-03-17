@@ -1,6 +1,7 @@
 import os
 import re
 import json
+from time import time
 import shutil
 from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -43,7 +44,7 @@ def clean_text(text):
 @app.post('/ai/api/update-knowledge')
 async def update_knowledge():
     try:
-
+        start_time = time()
         db_path = params['db_path']
         if os.path.isdir(db_path):
             # shutil.rmtree(db_path)
@@ -87,6 +88,14 @@ async def update_knowledge():
                 'text': "Store Successfully"
             }
         )
+        end_time = time()
+        minu = (end_time-start_time) // 60
+        sec = (end_time-start_time) % 60
+        print('*'* 80)
+        print(' '*10, f"Total time take {minu} minutes and {sec} secound")
+        print('*'* 80)
+
+        
         return response
 
     except Exception as ex:
