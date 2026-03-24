@@ -1,271 +1,52 @@
-
-# from components.config.embd_model import EmbeddedModel
-
-
-
-# # data = collection.get(include=["documents", "embeddings"])
-# # print(len(data["embeddings"]))
-
-
-# from components.config.chromadb_config import ChromaDB
-# from components.core.file_reader import ReadDocx
-# from components.config.chunk_config import CreatChunk
-# from components.config.embd_model import EmbeddedModel
-# from components.core.store_chunk import StoreChunk
-
-# path = 'AI Website Bot notes JBV.docx'
-
-# data = ReadDocx(path)
-# print('*' * 100)
-# # print(data)
-# print('*' * 100)
-
-# chunks = CreatChunk(data=data)
-# print('-' * 100)
-# print(len(chunks))
-# print('-' * 100)
-# # print(chunks)
-
-# embds = EmbeddedModel().encode(chunks)
-
-# print(len(embds))
-# print(f"Chunk length {len(chunks)} and Embedding length {len(embds)}")
-# StoreChunk(data=chunks, embedding=embds)
-
-# query = "Where are you"
-# model = EmbeddedModel()
-
-# embd = model.encode(query)
-
-# collection = ChromaDB()
-
-# results = collection.query(
-#     query_embeddings=[embd.tolist()],
-#     n_results=3
-# )
-
-# print(results)
-
-
-
-# import os
-# import shutil
-
-# folder_path = "chroma_db"
-
-# # Check if the folder exists before attempting to remove it
-# if os.path.isdir(folder_path):
-#     shutil.rmtree(folder_path)
-#     print(f"Folder '{folder_path}' and all its contents removed successfully.")
-# else:
-#     print(f"Folder '{folder_path}' not found or is not a directory.")
-
-# import requests
-
-# url = "https://www.beds24.com/api/json/getPropertyContent"
-
-# payload = {
-#     "authentication": {
-#         "apiKey": "h12j3123h123j28z",
-#         "propKey": "Joybeach8754h6fdr5"
-#     },
-#     "texts": ["EN"]
-# }
-
-# headers = {
-#     "Content-Type": "application/json"
-# }
-
-# response = requests.post(url, json=payload, headers=headers)
-
-# print(response.status_code)
-# print(response.json())
-
+import os
 import json
-# from components.asset.beds24 import GetRoomContent, GetRoomInformation
-
-# # data = GetRoomContent()
-
-# # with open('data.json', 'w', encoding='utf-8') as f:
-# #     json.dump(data,f, indent=4)
-# with open('data.json', 'r' ,encoding='utf-8') as f:
-
-#     data = json.load(f)
-
-
-# room_data = data['getPropertyContent'][0]['roomIds']
-
-# print(room_data)
-# room_ids = []
-# for k, v in room_data.items():
-#     room_ids.append(int(k))
-
-# print(room_ids)
-
-# room_info = GetRoomInformation()
-
-# print(str(room_info))
-
-
-# print(room_info)
-# with open('room_data.json', 'w', encoding='utf-8') as f:
-#     json.dump(room_info['getPropertyContent'][0]['roomIds'], f, indent=4)
-
-
-# from components.config.openai_model import LoadGPT
-# from dotenv import load_dotenv
-
-# load_dotenv()
-# model = LoadGPT()
-
-# print(model.invoke("Hi"))
-
-# with open('response_1773554258824.json', 'r' ,encoding='utf-8') as f:
-
-#     data = json.load(f)
-
-
-# print(data['messages'][1]['content'])
-# from components.asset.beds24 import Beds24Data
-
-# beds24 = Beds24Data()
-
-# data = beds24.GetRoomInformation(property_name="joy_beach_villa")
-# print(data)
-
-
-# import json
-# from dotenv import load_dotenv
-# from components.asset.beds24 import Beds24Data
-# from components.hyperparms import params
-# load_dotenv()
-
-# beds24 = Beds24Data()
-# data = []
-# properties = params['proparty_list']
-# for proper in properties:
-#     print('-' * 60)
-#     print(' ' * 25, proper)
-#     print('-' * 60)
-
-#     file = beds24.GetRoomInformation(property_name=proper)
-#     for room_key, room_value in file.items():
-
-#         room = {}
-#         room['proparty'] = proper
-#         for k1, v1 in room_value.items():
-#             if k1 == 'featureCodes':
-#                 feature = []
-#                 for fec in v1:
-#                     feature.extend(fec)
-#                 room['name'] = name
-                
-#             elif k1 == "name":
-#                 name = v1
-#             else:
-#                 room[k1] = v1
-                
-        
-#         room['features'] = feature
-
-#         data.append(room)
-#     print(f"Total get : {len(data)} villa")
-
-# with open('all_villag.json', 'w', encoding='utf-8') as f:
-#     json.dump(data, f, indent=4)
+import requests
 
 
 
 
+header = {'token': 'WtDtBTbjXXe2HwsPURQ6xbJbNfn9DIW3/FCiQ902mz039qCZRfcnCpkD7dX67vOAE5i0CqhG+Zx0oVUvpLVuxBqnapzXWqqfXpb3hJyRfsq1/rTxikxk5mAQ1U1mM3bIuKMEA7DCPlzmPV32hyV96g=='}
 
-import json
-from dotenv import load_dotenv
-from components.asset.beds24 import Beds24Data
-from components.hyperparms import params
-from components.hyperparms import params
-load_dotenv()
+url = 'https://www.beds24.com/api/v2/properties?includeTexts=all&includeAllRooms=true'
 
-from components.hyperparms import params
-from dotenv import load_dotenv
+response = requests.get(url, headers=header)
+v2_json_data = response.json()
 
-load_dotenv()
-from components.asset.get_all_villa import GetAllVilla
-
-# def flatten_feature_codes(feature_codes):
-#     flat_features = []
-
-#     for item in feature_codes:
-#         if isinstance(item, list):
-#             flat_features.extend(item)
-#         else:
-#             flat_features.append(item)
-
-#     return flat_features
-
-
-# def GetAllVilla():
-#     beds24 = Beds24Data()
-#     properties = params["proparty_list"]
-#     fields = params["fields"]
-#     field_map = params["FIELD_MAP"]
-
-#     data = []
-
-#     # build grouped output keys using mapped field names
-#     field_lists = {
-#         field_map.get(field, field): []
-#         for field in fields
-#         if field != "name"
-#     }
-
-#     for proper in properties:
-#         print("-" * 60)
-#         print(" " * 25, proper)
-#         print("-" * 60)
-
-#         file = beds24.GetRoomInformation(property_name=proper)
-
-#         for room_key, room_value in file.items():
-#             room = {"proparty": proper}
-
-#             for field in fields:
-#                 # first get value using original source field name
-#                 value = room_value.get(field)
-
-#                 # special handling for featureCodes
-#                 if field == "featureCodes" and value is not None:
-#                     value = flatten_feature_codes(value)
-
-#                 # then rename only the output key
-#                 new_field = field_map.get(field, field)
-#                 room[new_field] = value
-
-#             data.append(room)
-
-#             for field in fields:
-#                 if field == "name":
-#                     continue
-
-#                 new_field = field_map.get(field, field)
-
-#                 field_lists[new_field].append({
-#                     "proparty": proper,
-#                     "name": room.get(field_map.get("name", "name")),
-#                     new_field: room.get(new_field)
-#                 })
-
-#     data = [
-#         {
-#             "field": field,
-#             "data": values
-#         }
-#         for field, values in field_lists.items()
-#     ]
-
-#     return data
-
-data = GetAllVilla()
+villa_info = []
+fields = [
+            "name", "id", "currency", "address", "city", "state",
+            "country", "postcode", "latitude", "longitude", "phone", "email", "web"
+        ]
+FIELD_MAP = {
+            "name": "name/proparty_name/villa_name",
+            "latitude": "latitude/location",
+            "latitude": "latitude/location",
+            "country": "country/location",
+            "city": "city/location",
+            "state": "state/location",
+            "postcode": "postcode/location",
+        }
+data = []
+for prop in v2_json_data['data']:
 
 
-with open('zzall_villag.json', 'w', encoding='utf-8') as f:
+    item = {}
+
+    for field in fields:
+
+        value = prop.get(field)
+
+        # rename key using FIELD_MAP if exists
+        new_field = FIELD_MAP.get(field, field)
+
+        item[new_field] = value
+
+    data.append(item)
+
+with open("data/proparty_data.json", 'w', encoding='utf-8') as f:
     json.dump(data, f, indent=4)
+
+
+
+# with open("data/v2_beds24_data.json", 'w', encoding='utf-8') as f:
+#     json.dump(v2_json_data, f, indent=4)

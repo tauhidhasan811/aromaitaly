@@ -1,8 +1,8 @@
 params = {
     'proparty_list' : ["joy_beach_villa", "the_view_villa"],
     'url' : "https://www.beds24.com/api/json/getPropertyContent",
-    'fields': ["name", "rackRate", "cleaningFee", "securityDeposit", "taxPercent", 
-               "taxPerson", "featureCodes", "roomId"],
+    'fields': ["name", "rackRate", "cleaningFee", "securityDeposit","maxPeople", "maxAdult","maxChildren",
+                "taxPercent", "taxPerson", "featureCodes", "id"],
     'db_path' : 'db/chroma_db',
     'FIELD_MAP' : {
             "name": "name/title/room_name/villa_name",

@@ -1,0 +1,32 @@
+[
+    {
+        "name/proparty_name/villa_name": "Joy Beach Villas",
+        "id": 150956,
+        "currency": "THB",
+        "address": "4 \u0e2b\u0e21\u0e39\u0e48 6,",
+        "city/location": "Koh Phangan",
+        "state/location": "Surathani",
+        "country/location": "TH",
+        "postcode/location": "84280",
+        "latitude/location": 9.7489899,
+        "longitude": 99.9751887,
+        "phone": "+66624080324",
+        "email": "reception@joybeachvillas.com",
+        "web": "https://joybeachvillas.com"
+    },
+    {
+        "name/proparty_name/villa_name": "The View Villa",
+        "id": 152084,
+        "currency": "THB",
+        "address": "4 \u0e2b\u0e21\u0e39\u0e48 6",
+        "city/location": "Koh Phangan ",
+        "state/location": "Surat Thani",
+        "country/location": "TH",
+        "postcode/location": "84280",
+        "latitude/location": 9.7562973,
+        "longitude": 99.9778144,
+        "phone": "66624080324",
+        "email": "reception@joybeachvillas.com",
+        "web": ""
+    }
+]
