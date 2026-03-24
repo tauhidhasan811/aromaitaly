@@ -137,8 +137,9 @@ async def Check(data : ChatBody):
                         previous_information=data.prev_info,
                         relevant_information=context)
 
-        text = model.invoke(prompt).content
-        text = clean_text(text)
+        text = model.invoke(prompt)
+        print(text)
+        text = clean_text(text.content)
 
         response = JSONResponse(
             status_code=200,
