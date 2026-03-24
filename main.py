@@ -22,6 +22,8 @@ from components.core.clean_chunk_doc import format_retrieved_context, CleanVilla
 from components.hyperparms import params
 from components.core.delete_path import force_delete_folder
 from typing import Optional
+from components.asset.avaiabality_tools import check_availability
+from langchain.messages import HumanMessage, ToolMessage
 load_dotenv()
 model = LoadGPT()
 app = FastAPI()
@@ -129,16 +131,31 @@ async def Check(data : ChatBody):
             query_embeddings=[embd.tolist()],
             n_results=3
         )
-        print(results)
+        # print(results)
 
         context = format_retrieved_context(results)
-        print(context)
+        # print(context)
         prompt = RAGPrompt(user_query=data.user_query, 
                         previous_information=data.prev_info,
                         relevant_information=context)
 
         text = model.invoke(prompt)
         print(text)
+        if text.tool_calls:
+            messages = [HumanMessage(content=data.user_query), text]
+
+            for tool_call in text.tool_calls:
+                tool_res = check_availability.invoke(tool_call["args"])
+                print(tool_res)
+
+                messages.append(
+                    ToolMessage(
+                        content=str(tool_res),
+                        tool_call_id=tool_call["id"]
+                    )
+                )
+            text = model.invoke(messages)
+
         text = clean_text(text.content)
 
         response = JSONResponse(
