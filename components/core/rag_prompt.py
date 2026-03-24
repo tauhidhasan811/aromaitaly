@@ -18,6 +18,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
                 - Keep the answer short, specific, clear, and well-organized.
                 - Do not add unnecessary words.
                 - Do not respond in FAQ format.
+                - Finally give the response in basic html tag like, <p>, <span>, <li>, <td>, <tr> this type of tags
 
                 Villa URL rule:
                 - If the user asks about a villa/property, provide the villa URL in this format:
