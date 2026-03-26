@@ -114,8 +114,8 @@ async def update_knowledge(file: Optional[UploadFile]= File(None)):
         chunks.extend(room_info)
 
         # print(room_info)
-        with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
-            json.dump(chunks, f, indent=4)
+        # with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
+        #     json.dump(chunks, f, indent=4)
 
         if os.path.isdir(db_path):
             # shutil.rmtree(db_path)
