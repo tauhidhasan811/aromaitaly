@@ -52,7 +52,7 @@ def clean_text(text):
     return " ".join(text.split()).strip()
 
 @app.post('/ai/api/update-knowledge')
-async def update_knowledge(file: UploadFile = File()):
+async def update_knowledge(file: Optional[UploadFile]= File(None)):
     try:
         pool = embd_model.start_multi_process_pool()
         start_time = time()
@@ -60,23 +60,27 @@ async def update_knowledge(file: UploadFile = File()):
         
         
         dir = 'data'
-        ext = file.filename.split('.')[-1]
-        accepted = ['pdf', 'docx']
-        if ext not in accepted:
-            return JSONResponse(
-                status_code=403,
-                content={
-                    'status': False,
-                    'status_code': 403,
-                    'text': f"Invalid file format '{ext}' only accepted {accepted}"
-                }
-            )
-        file_name = f'notes.{ext}'
+        if file is not None:
+            ext = file.filename.split('.')[-1]
+            accepted = ['pdf', 'docx']
+            if ext not in accepted:
+                return JSONResponse(
+                    status_code=403,
+                    content={
+                        'status': False,
+                        'status_code': 403,
+                        'text': f"Invalid file format '{ext}' only accepted {accepted}"
+                    }
+                )
+            file_name = f'notes.{ext}'
 
-        file_path = os.path.join(dir, file_name)
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-        print(file_path)
+            file_path = os.path.join(dir, file_name)
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(file.file, buffer)
+            print(file_path)
+
+        else:
+            file_path= r'data\AI Website Bot notes JBV.docx'
 
         
 
