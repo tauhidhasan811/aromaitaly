@@ -71,13 +71,7 @@ async def update_knowledge(file: UploadFile = File()):
             shutil.copyfileobj(file.file, buffer)
         print(file_path)
 
-        if os.path.isdir(db_path):
-            # shutil.rmtree(db_path)
-            force_delete_folder(db_path)
-            print(f"Folder '{db_path}' and all its contents removed successfully.")
-        else:
-            print("No previous data")
-            os.makedirs(db_path, exist_ok=True)
+        
 
 
         data = extract_document(file_path=file_path) 
@@ -94,11 +88,19 @@ async def update_knowledge(file: UploadFile = File()):
         
 
         chunks.extend(room_info)
+
         # print(room_info)
         with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
             json.dump(chunks, f, indent=4)
 
-
+        if os.path.isdir(db_path):
+            # shutil.rmtree(db_path)
+            force_delete_folder(db_path)
+            print(f"Folder '{db_path}' and all its contents removed successfully.")
+        else:
+            print("No previous data")
+            os.makedirs(db_path, exist_ok=True)
+            
         # embds = embd_model.encode(chunks)
         embds = embd_model.encode_multi_process( chunks, pool )
 
@@ -166,7 +168,7 @@ async def Check(data : ChatBody):
                         relevant_information=context)
 
         text = model.invoke(prompt)
-        print(text)
+        # print(text)
         if text.tool_calls:
             messages = [HumanMessage(content=data.user_query), text]
 

@@ -14,6 +14,7 @@ def extract_document(file_path: str) -> str:
         text = ReadDocx(file_path=file_path)
 
     else:
-        return HTTPException(status_code=403,detail=f"Unsupported file type: {ext}")
+        # return HTTPException(status_code=403,detail=f"Unsupported file type: {ext}")
+        return ValueError(f"Unsupported file type: {ext}")
         # text = f"Unsupported file type: {ext}"
     return text
