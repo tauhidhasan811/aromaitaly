@@ -3,7 +3,7 @@ import re
 import json
 from time import time
 import shutil
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
@@ -24,6 +24,8 @@ from components.core.delete_path import force_delete_folder
 from typing import Optional
 from components.asset.avaiabality_tools import check_availability
 from langchain.messages import HumanMessage, ToolMessage
+import tempfile
+from components.core.wrapper import extract_document
 load_dotenv()
 model = LoadGPT()
 app = FastAPI()
@@ -44,10 +46,31 @@ def clean_text(text):
     return " ".join(text.split()).strip()
 
 @app.post('/ai/api/update-knowledge')
-async def update_knowledge():
+async def update_knowledge(file: UploadFile = File()):
     try:
         start_time = time()
         db_path = params['db_path']
+        
+        
+        dir = 'data'
+        ext = file.filename.split('.')[-1]
+        accepted = ['pdf', 'docx']
+        if ext not in accepted:
+            return JSONResponse(
+                status_code=403,
+                content={
+                    'status': False,
+                    'status_code': 403,
+                    'text': f"Invalid file format '{ext}' only accepted {accepted}"
+                }
+            )
+        file_name = f'notes.{ext}'
+
+        file_path = os.path.join(dir, file_name)
+        with open(file_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+        print(file_path)
+
         if os.path.isdir(db_path):
             # shutil.rmtree(db_path)
             force_delete_folder(db_path)
@@ -56,8 +79,11 @@ async def update_knowledge():
             print("No previous data")
             os.makedirs(db_path, exist_ok=True)
 
-        path = 'AI Website Bot notes JBV.docx'
-        data = ReadDocx(path)
+
+        data = extract_document(file_path=file_path) 
+
+        # path = 'AI Website Bot notes JBV.docx'
+        # data = ReadDocx(path)
         chunks = CreatChunk(data=data)
         # room_info = str(GetRoomInformation())
         room_info = GetAllVilla()

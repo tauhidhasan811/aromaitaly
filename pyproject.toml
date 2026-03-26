@@ -12,6 +12,7 @@ dependencies = [
     "langchain-openai>=1.1.11",
     "langchain-text-splitters>=1.1.1",
     "loadenv>=0.1.1",
+    "pymupdf>=1.27.2.2",
     "python-docx>=1.2.0",
     "sentence-transformers>=5.3.0",
 ]
