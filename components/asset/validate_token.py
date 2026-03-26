@@ -5,11 +5,8 @@ import requests
 import os
 
 
-def RefreshAccessToken():
+def GetAccessToken():
     refreshToken = os.environ.get("REFRESH_TOKEN")
-
-    if not refreshToken:
-        raise ValueError("REFRESH_TOKEN not found in environment variables")
 
     headers = {
         "accept": "application/json",
@@ -23,13 +20,14 @@ def RefreshAccessToken():
 
     if response.status_code == 200:
         data = response.json()
-
+        print("Previous Token from env:", os.environ.get("ACCESS_TOKEN"))
         os.environ["ACCESS_TOKEN"] = data.get("token")
 
         print("Token:", data.get("token"))
+        print("Current Token from env:", os.environ.get("ACCESS_TOKEN"))
         print("Expires In:", data.get("expiresIn"))
 
-        return data.get("token")
-    else:
-        print("Error:", response.text)
-        return None
+        return True
+    
+    return False
+    
