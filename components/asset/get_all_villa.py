@@ -222,8 +222,8 @@ def GetAllVilla():
 
         proparty_info.append(item)
 
-    with open("data/proparty_data.json", 'w', encoding='utf-8') as f:
-        json.dump(proparty_info, f, indent=4)
+    # with open("data/proparty_data.json", 'w', encoding='utf-8') as f:
+    #     json.dump(proparty_info, f, indent=4)
 
 
     missed_villaInfo = {
@@ -299,8 +299,8 @@ def GetAllVilla():
             for field, values in field_lists.items()
         ]
 
-    with open("data/v2_beds24_room_data.json", 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)
+    # with open("data/v2_beds24_room_data.json", 'w', encoding='utf-8') as f:
+    #     json.dump(data, f, indent=4)
     
     return data
 
