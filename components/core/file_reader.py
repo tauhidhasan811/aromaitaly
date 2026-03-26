@@ -2,17 +2,20 @@ from docx import Document
 import fitz
 
 
-def ReadDocx(path):
-    doc = Document(path)
+def ReadDocx(file_path):
+    print(' '* 60)
+    print(file_path)
+    print(' '* 60)
+    doc = Document(file_path)
 
     text_data = ""
     for p in doc.paragraphs:
         text_data += " " + p.text
     return text_data
 
-def ReadPdf(pdf_path: str):
-    doc = fitz.open(pdf_path)
-
+def ReadPdf(file_path: str):
+    doc = fitz.open(file_path)
+    
     extracted_text = ""
     for page_index, page in enumerate(doc):
         text = page.get_text().strip()

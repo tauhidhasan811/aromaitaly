@@ -26,9 +26,15 @@ from components.asset.avaiabality_tools import check_availability
 from langchain.messages import HumanMessage, ToolMessage
 import tempfile
 from components.core.wrapper import extract_document
+from components.asset.validate_token import GetAccessToken
+import datetime
+
 load_dotenv()
 model = LoadGPT()
 app = FastAPI()
+
+app.state.expire_time = datetime.datetime.now()
+# print(expire_time)
 
 app.add_middleware(
     CORSMiddleware,
@@ -48,6 +54,7 @@ def clean_text(text):
 @app.post('/ai/api/update-knowledge')
 async def update_knowledge(file: UploadFile = File()):
     try:
+        pool = embd_model.start_multi_process_pool()
         start_time = time()
         db_path = params['db_path']
         
@@ -71,13 +78,7 @@ async def update_knowledge(file: UploadFile = File()):
             shutil.copyfileobj(file.file, buffer)
         print(file_path)
 
-        if os.path.isdir(db_path):
-            # shutil.rmtree(db_path)
-            force_delete_folder(db_path)
-            print(f"Folder '{db_path}' and all its contents removed successfully.")
-        else:
-            print("No previous data")
-            os.makedirs(db_path, exist_ok=True)
+        
 
 
         data = extract_document(file_path=file_path) 
@@ -86,6 +87,19 @@ async def update_knowledge(file: UploadFile = File()):
         # data = ReadDocx(path)
         chunks = CreatChunk(data=data)
         # room_info = str(GetRoomInformation())
+
+        if datetime.datetime.now() >= app.state.expire_time:
+            if GetAccessToken():
+                app.state.expire_time = datetime.datetime.now() + datetime.timedelta(seconds=24 * 60 * 60)
+            else:
+                response = JSONResponse(
+                    status_code=500,
+                    content={
+                        'status': False,
+                        'status_code': 500,
+                        'text': "Failed to create Access token. May Refresh token expire"
+                    }
+        )
         room_info = GetAllVilla()
         # print(room_info)
         # room_info = re.sub(r"[\[\]']", "", room_info)
@@ -94,11 +108,19 @@ async def update_knowledge(file: UploadFile = File()):
         
 
         chunks.extend(room_info)
+
         # print(room_info)
         with open('frewgtfzzall_villag.json', 'w', encoding='utf-8') as f:
             json.dump(chunks, f, indent=4)
 
-
+        if os.path.isdir(db_path):
+            # shutil.rmtree(db_path)
+            force_delete_folder(db_path)
+            print(f"Folder '{db_path}' and all its contents removed successfully.")
+        else:
+            print("No previous data")
+            os.makedirs(db_path, exist_ok=True)
+            
         # embds = embd_model.encode(chunks)
         embds = embd_model.encode_multi_process( chunks, pool )
 
@@ -146,6 +168,7 @@ async def Check(data : ChatBody):
     
 
     try:
+        
         db_path = params['db_path']
         
         embd = embd_model.encode(data.user_query)
@@ -166,7 +189,7 @@ async def Check(data : ChatBody):
                         relevant_information=context)
 
         text = model.invoke(prompt)
-        print(text)
+        # print(text)
         if text.tool_calls:
             messages = [HumanMessage(content=data.user_query), text]
 
