@@ -278,7 +278,9 @@ def GetAllVilla():
             for field in fields:
                 if field == "name" or field == 'id':
                     continue
-                if room.get('id') == 337089 or room.get('id') == 642098:
+                # if room.get('id') == 337089 or room.get('id') == 642098:
+                #     continue
+                if room.get('id') == 642098:
                     continue
 
                 new_field = field_map.get(field, field)
