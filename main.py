@@ -29,9 +29,10 @@ from components.core.wrapper import extract_document
 from components.asset.validate_token import GetAccessToken
 from components.core.clean_text import clean_previous_text
 import datetime
+from components.core.clean_text import SelectedPreviousData
 
 load_dotenv()
-model = LoadGPT()
+model = LoadGPT("gpt-4.1-nano-2025-04-14")
 app = FastAPI()
 
 app.state.expire_time = datetime.datetime.now()
@@ -175,10 +176,10 @@ async def Check(data : ChatBody):
     try:
         user_query = data.user_query
         prev_unclean_info = data.prev_info
-        prev_info = clean_previous_text(prev_unclean_info)
+        prev_info = SelectedPreviousData(prev_unclean_info)
         print('=' * 80)
         print(f"Unclean data length : {len(prev_unclean_info)}")
-        print(f"Unclean data length : {len(prev_info)}")
+        print(f"Clean data length : {len(prev_info)}")
 
         print('=' * 80)
 
