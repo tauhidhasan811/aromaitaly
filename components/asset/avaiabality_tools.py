@@ -1,16 +1,29 @@
 from langchain.tools import tool
 from typing import List
 from datetime import date
+import datetime
 import requests
 import os
 
+today = datetime.date.today()
+tomorrow = today + datetime.timedelta(days=1)
+end = tomorrow + datetime.timedelta(days=7)
 
-@tool
-def check_availability(room_ids: List[int], start_date: date, end_date: date):
-    """Check room availability by room IDs and date interval. 
-    room_ids come from previous information, and dates come from the user in YYYY-MM-DD format.
-    and if user do not mension year the again tell them to give year and month and date
+description = f"""
+        Check room availability by room IDs and date interval.
+        room_ids come from previous information, dates come from user in YYYY-MM-DD format.
+        Current date is {today}.
+        If user does not provide date, check availability from {tomorrow} to {end} and ask their preferred dates.
     """
+
+@tool(description=description)
+def check_availability(room_ids: List[int], start_date: date, end_date: date):
+    # """
+    #     Check room availability by room IDs and date interval.
+    #     room_ids come from previous information, dates come from user in YYYY-MM-DD format.
+    #     If user does not provide date, check availability from tomorrow ({datetime.datetime.now()}) for next 3 days and ask their preferred dates.
+    # """
+    description
     # header = {'token': 'WtDtBTbjXXe2HwsPURQ6xbJbNfn9DIW3/FCiQ902mz039qCZRfcnCpkD7dX67vOAE5i0CqhG+Zx0oVUvpLVuxBqnapzXWqqfXpb3hJyRfsq1/rTxikxk5mAQ1U1mM3bIuKMEA7DCPlzmPV32hyV96g=='}
     token = os.environ.get('ACCESS_TOKEN_AI')
     header = {'token': token}
