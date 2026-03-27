@@ -23,10 +23,11 @@ from components.hyperparms import params
 from components.core.delete_path import force_delete_folder
 from typing import Optional
 from components.asset.avaiabality_tools import check_availability
-from langchain.messages import HumanMessage, ToolMessage
+from langchain.messages import HumanMessage, ToolMessage, SystemMessage
 import tempfile
 from components.core.wrapper import extract_document
 from components.asset.validate_token import GetAccessToken
+from components.core.clean_text import clean_previous_text
 import datetime
 
 load_dotenv()
@@ -179,6 +180,9 @@ async def Check(data : ChatBody):
 
         collection = ChromaDB(db_path=db_path)
 
+        if datetime.datetime.now() >= app.state.expire_time:
+            if GetAccessToken():
+                app.state.expire_time = datetime.datetime.now() + datetime.timedelta(seconds=24 * 60 * 60)
 
         results = collection.query(
             query_embeddings=[embd.tolist()],
@@ -195,7 +199,9 @@ async def Check(data : ChatBody):
         text = model.invoke(prompt)
         # print(text)
         if text.tool_calls:
-            messages = [HumanMessage(content=data.user_query), text]
+
+            messages = [SystemMessage(content="Response are give proper html tag like <p>, <li>, <ul>, or just serial number")]
+            messages.extend([HumanMessage(content=data.user_query), text])
 
             for tool_call in text.tool_calls:
                 tool_res = check_availability.invoke(tool_call["args"])
