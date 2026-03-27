@@ -173,7 +173,16 @@ async def Check(data : ChatBody):
     
 
     try:
-        
+        user_query = data.user_query
+        prev_unclean_info = data.prev_info
+        prev_info = clean_previous_text(prev_unclean_info)
+        print('=' * 80)
+        print(f"Unclean data length : {len(prev_unclean_info)}")
+        print(f"Unclean data length : {len(prev_info)}")
+
+        print('=' * 80)
+
+
         db_path = params['db_path']
         
         embd = embd_model.encode(data.user_query)
@@ -192,8 +201,8 @@ async def Check(data : ChatBody):
 
         context = format_retrieved_context(results)
         # print(context)
-        prompt = RAGPrompt(user_query=data.user_query, 
-                        previous_information=data.prev_info,
+        prompt = RAGPrompt(user_query=user_query, 
+                        previous_information=prev_info,
                         relevant_information=context)
 
         text = model.invoke(prompt)
