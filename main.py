@@ -32,7 +32,11 @@ import datetime
 from components.core.clean_text import SelectedPreviousData
 
 load_dotenv()
-model = LoadGPT("gpt-4.1-nano-2025-04-14")
+# model = LoadGPT("gpt-4.1-nano-2025-04-14")
+# model = LoadGPT("o4-mini-2025-04-16")
+model = LoadGPT()
+
+
 app = FastAPI()
 
 app.state.expire_time = datetime.datetime.now()
@@ -214,6 +218,7 @@ async def Check(data : ChatBody):
             messages.extend([HumanMessage(content=data.user_query), text])
 
             for tool_call in text.tool_calls:
+                # print(check_availability.description)
                 tool_res = check_availability.invoke(tool_call["args"])
                 print(tool_res)
 
