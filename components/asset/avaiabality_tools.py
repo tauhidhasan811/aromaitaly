@@ -12,7 +12,7 @@ def check_availability(room_ids: List[int], start_date: date, end_date: date):
     and if user do not mension year the again tell them to give year and month and date
     """
     # header = {'token': 'WtDtBTbjXXe2HwsPURQ6xbJbNfn9DIW3/FCiQ902mz039qCZRfcnCpkD7dX67vOAE5i0CqhG+Zx0oVUvpLVuxBqnapzXWqqfXpb3hJyRfsq1/rTxikxk5mAQ1U1mM3bIuKMEA7DCPlzmPV32hyV96g=='}
-    token = os.environ.get('ACCESS_TOKEN')
+    token = os.environ.get('ACCESS_TOKEN_AI')
     header = {'token': token}
 
     start = start_date.strftime("%Y-%m-%d")
