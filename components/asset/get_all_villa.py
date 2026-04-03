@@ -182,6 +182,7 @@ def GetAllVilla():
 """
 
 def GetAllVilla():
+
     # header = {'token': 'WtDtBTbjXXe2HwsPURQ6xbJbNfn9DIW3/FCiQ902mz039qCZRfcnCpkD7dX67vOAE5i0CqhG+Zx0oVUvpLVuxBqnapzXWqqfXpb3hJyRfsq1/rTxikxk5mAQ1U1mM3bIuKMEA7DCPlzmPV32hyV96g=='}
     token = os.environ.get('ACCESS_TOKEN_AI')
     header = {'token': token}
@@ -190,7 +191,9 @@ def GetAllVilla():
 
     response = requests.get(url, headers=header)
     v2_json_data = response.json()
-
+    with open("data/v2_all_villa.json", 'w', encoding='utf-8') as f:
+        json.dump(v2_json_data, f, indent=4)
+    print(v2_json_data)
     villa_info = []
     fields = [
                 "name", "id", "currency", "address", "city", "state",
@@ -249,8 +252,6 @@ def GetAllVilla():
         print("-" * 60)
         print(" " * 25, proper_data['name'])
         print("-" * 60)
-
-            
             # villa_info, file = beds24.GetRoomInformation(property_name=proper)
             
             # print(missed_villaInfo)
@@ -300,16 +301,62 @@ def GetAllVilla():
             }
             for field, values in field_lists.items()
         ]
-
-    # with open("data/v2_beds24_room_data.json", 'w', encoding='utf-8') as f:
-    #     json.dump(data, f, indent=4)
     
     return data
 
 
-    # with open("data/v2_beds24_data.json", 'w', encoding='utf-8') as f:
-    #     json.dump(v2_json_data, f, indent=4)
+def GetPriceAllVilla():
+    token = os.environ.get('ACCESS_TOKEN_AI')
+    header = {'token': token}
 
+    url = 'https://www.beds24.com/api/v2/properties?includeTexts=all&includeAllRooms=true'
 
-    # with open("data/v2_beds24_data.json", 'w', encoding='utf-8') as f:
-    #     json.dump(v2_json_data, f, indent=4)
+    response = requests.get(url, headers=header)
+    v2_json_data = response.json()
+    print(v2_json_data)
+
+    price_fields = ["rackRate", "cleaningFee", "securityDeposit", "taxPercentage"]
+    room_fields = ["name", "id", *price_fields]
+    field_map = params["FIELD_MAP"]
+
+    field_lists = {
+        field_map.get(field, field): []
+        for field in price_fields
+    }
+
+    for proper_data in v2_json_data['data']:
+        print("-" * 60)
+        print(" " * 25, proper_data['name'])
+        print("-" * 60)
+
+        for room_data in proper_data['roomTypes']:
+            room = {"proparty": proper_data['name']}
+
+            for field in room_fields:
+                value = room_data.get(field)
+
+                if field == "featureCodes" and value is not None:
+                    value = flatten_feature_codes(value)
+
+                new_field = field_map.get(field, field)
+                room[new_field] = value
+
+            if room.get("id") == 642098:
+                continue
+
+            for field in price_fields:
+                new_field = field_map.get(field, field)
+                field_lists[new_field].append({
+                    "proparty": proper_data['name'],
+                    "name": room.get(field_map.get("name", "name")),
+                    "roomId": room.get(field_map.get("id", "id")),
+                    new_field: room.get(new_field)
+                })
+
+    return [
+        {
+            "field": field,
+            "data": values
+        }
+        for field, values in field_lists.items()
+    ]
