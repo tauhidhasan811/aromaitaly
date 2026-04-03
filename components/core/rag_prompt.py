@@ -28,7 +28,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
 
                 Customer support:
                 Not every user query requires sharing customer support information. Only share it if the answer cannot be found in the relevant information. When sharing, use this format:
-                - WhatsApp: https://wa.me/66624080324?text={add a shor meesage like booking info or information or what suppoert needed to the customer}
+                - WhatsApp: https://wa.me/66624080324?text={add optimize short note based on previous and current query like i want to book  from to date on --villa or i nedd __ information like that"}
                 - Reception hours: 8 AM – 5 PM Thailand time
                 """
     )
