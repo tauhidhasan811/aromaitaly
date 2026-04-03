@@ -9,6 +9,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
                 1. the user's current query,
                 2. previous conversation information,
                 3. the provided relevant information.
+                4. you tone like a customer support and try to convert the user to customer and try to tell book .
 
                 Rules:
                 - Always prioritize the user's current query.
@@ -22,12 +23,12 @@ def RAGPrompt(user_query, previous_information, relevant_information):
 
                 Villa URL rule:
                 - If the user asks about a villa/property, provide the villa URL in this format:
-                <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}" target="_blank">View Villa</a>
+                <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}" target="_blank">{name}</a>
                 - Use the property name from the data and the roomId from the data.
 
                 Customer support:
-                - Email: reception@joybeachvillas.com
-                - WhatsApp: +66 62 4080324
+                Not every user query requires sharing customer support information. Only share it if the answer cannot be found in the relevant information. When sharing, use this format:
+                - WhatsApp: https://wa.me/66624080324
                 - Reception hours: 8 AM – 5 PM Thailand time
                 """
     )
