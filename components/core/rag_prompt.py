@@ -19,6 +19,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
 
             Behavior rules:
             - Always prioritize the user's current question.
+            - response will be shorter informative and to the point and try to convert the user to customer and try to tell book .
             - Use previous conversation context only when it helps answer the current question.
             - Use only the provided relevant information. Do not invent or assume details.
             - Do not hallucinate prices, availability, policies, dates, amenities, or villa details.
