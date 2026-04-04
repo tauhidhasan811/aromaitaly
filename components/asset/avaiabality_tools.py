@@ -14,7 +14,8 @@ description = f"""
         room_ids come from previous information, dates come from user in YYYY-MM-DD format.
         Current date is {today}.
         If user does not provide date, check availability from {tomorrow} to {end} and ask their preferred dates.
-        if user give check-in and check-out date then check availability for that date and also next 20 days also for backup information.
+        if user give check-in and check-out date then check availability
+        if user given date less then 5 nights then auto give checkout date will be check-in date + 14 days.
     """
 
 @tool(description=description)
