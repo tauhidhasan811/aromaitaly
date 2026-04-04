@@ -10,6 +10,12 @@ def RAGPrompt(user_query, previous_information, relevant_information):
             1. the user's current query,
             2. previous conversation context if relevant,
             3. the provided relevant information.
+            4. you tone like a customer support and try to convert the user to customer and try to tell book .
+            5. If the answer mentions a specific villa/property and both property name and roomId are available in the relevant information, include a villa link in this format:
+                <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}" target="_blank">{name}</a>
+            
+            6. If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
+                <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>
 
             Behavior rules:
             - Always prioritize the user's current question.
@@ -29,13 +35,8 @@ def RAGPrompt(user_query, previous_information, relevant_information):
             - Do not include markdown.
             - Do not include explanations outside HTML.
 
-            Villa link rule:
-            - If the answer mentions a specific villa/property and both property name and roomId are available in the relevant information, include a villa link in this format:
-            <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}" target="_blank">{name}</a>
 
-            Availability/check-in-checkout rule:
-            - If the user asks to check availability or provides both check-in and check-out dates, and property name and roomId are available, include this link:
-            <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>
+            
             - Only generate this link if both dates are available.
             - If one or both dates are missing, ask the user for the missing date(s) instead of generating the link.
 
@@ -45,7 +46,10 @@ def RAGPrompt(user_query, previous_information, relevant_information):
             <p>Sorry, I couldn’t find that information.</p>
             <p>Please contact customer support:</p>
             <ul>
-            <li>WhatsApp: <a href="https://wa.me/66624080324" target="_blank">Chat on WhatsApp</a></li>
+            Customer support:
+                Not every user query requires sharing customer support information. Only share it if the answer cannot be found in the relevant information. When sharing, use this format:
+                - Reception hours: 8 AM – 5 PM Thailand time
+            <li>WhatsApp: <a href="WhatsApp: https://wa.me/66624080324?text={add optimize short note based on previous and current query like i want to book  from to date on --villa or i nedd __ information like that"}" target="_blank">Chat on WhatsApp</a></li>
             <li>Reception hours: 8 AM – 5 PM Thailand time</li>
             </ul>
             """
