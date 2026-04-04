@@ -7,13 +7,14 @@ import os
 
 today = datetime.date.today()
 tomorrow = today + datetime.timedelta(days=1)
-end = tomorrow + datetime.timedelta(days=7)
+end = tomorrow + datetime.timedelta(days=30)
 
 description = f"""
         Check room availability by room IDs and date interval.
         room_ids come from previous information, dates come from user in YYYY-MM-DD format.
         Current date is {today}.
         If user does not provide date, check availability from {tomorrow} to {end} and ask their preferred dates.
+        if user give check-in and check-out date then check availability for that date and also next 20 days also for backup information.
     """
 
 @tool(description=description)

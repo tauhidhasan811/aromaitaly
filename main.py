@@ -215,8 +215,10 @@ async def Check(data : ChatBody):
         if text.tool_calls:
 
             messages = [SystemMessage(content=
-                                      """Response are give proper html tag like <p>, <li>, <ul>, or just serial number and If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
-                                        <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>""")
+                                      """
+                                      Spaciel note: minimum 7 days need to book if any villa is not avaiable continiue 7 days that time say not avaiable and if any villa is avaiable continiue 7 days that time say avaiable and give the link with proper html tag like <p>, <li>, <ul>, or just serial number and If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
+                                      Response are give proper html tag like <p>, <li>, <ul>, or just serial number and If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
+                                      <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>""")
                                         ]
             messages.extend([HumanMessage(content=data.user_query), text])
 
