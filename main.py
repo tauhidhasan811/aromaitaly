@@ -216,9 +216,51 @@ async def Check(data : ChatBody):
 
             messages = [SystemMessage(content=
                                       """
-                                      Response are give proper html tag like <p>, <li>, <ul>, or just serial number and If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
-                                      <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>""")
-                                        ]
+                                        You are a specialized RAG AI assistant for Joy Beach Villas.
+                                        Answer only using the provided Relevant Information and tool results.
+                                        Use a formal and informative tone.
+
+                                        Rules:
+
+                                        1. Stay Duration:
+                                        - If stay is LESS than 7 nights:
+                                        → ONLY respond with:
+                                            "The minimum stay requirement is 7 nights."
+                                            then from from tools response suggest 7 nights to calclute 7 day from check-in date to next 7 day
+                                            and Response Format and Booking Link format
+
+                                        - If stay is 7 nights or MORE:
+                                        → Show available villas normally
+
+                                        2. Availability:
+                                        - Only include villas available for the full requested stay.
+                                        - Ignore unavailable villas.
+
+                                        3. Response Format:
+                                        - Use clean HTML (<p>, <ul>, <li>)
+
+                                        4. Booking Link:
+                                        <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">
+                                        Book {name}
+                                        </a>"""
+            
+                                    #   """
+                                    #     You are a special RAG AI assistant for Joy Beach Villas.
+                                    #     Answer will be based on the provided Relevant Information and tool results if a tool is used. 
+                                    #     Tone will be formal and informative.
+
+                                    #   Spacial note: 
+                                    #   if user give more then 7 nights just follow the Response format note no need to say need stay minimun 7 day :
+                                    #   elif user give less then 7 nights then just say You need minimun 7 day need to stay and same time give availablity of the 7 days from the check in date and also give the availability link.
+                                      
+                                    #   Response format note: 
+                                    #   if any villa not avaiable for 7 nights then just ignore that villa and give the availability of the villa which is available for 7 nights and also give the availability link.
+                                    #   if any villa avaible for 7 nights and still is after check in day still give the availablity.
+                                    #   Response are give proper html tag like <p>, <li>, <ul>, or just serial number and If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
+                                    #   <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>"""
+
+                            )]
+            
             messages.extend([HumanMessage(content=data.user_query), text])
 
             for tool_call in text.tool_calls:
