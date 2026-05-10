@@ -3,6 +3,7 @@ from typing import List
 from datetime import date
 import datetime
 import requests
+import json
 import os
 
 today = datetime.date.today()
@@ -44,5 +45,7 @@ def check_availability(room_ids: List[int], start_date: date, end_date: date):
             "status_code": response.status_code,
             "message": response.text
         }
-
+    data = response.json()
+    with open('data/avaiablity.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
     return response.json()

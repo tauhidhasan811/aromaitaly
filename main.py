@@ -86,7 +86,7 @@ async def update_knowledge(file: Optional[UploadFile]= File(None)):
             print(file_path)
 
         else:
-            file_path= r'data\AI Website Bot notes JBV.docx'
+            file_path= 'data/AI Website Bot notes JBV.docx'
 
         
 
@@ -223,13 +223,30 @@ async def Check(data : ChatBody):
                                         Rules:
 
                                         1. Stay Duration:
-                                        - If stay is LESS than 7 nights:
+                                        Minimun night stay: 
+                                            {
+                                                "Beachfront Villa": 3,
+                                                "Deluxe Garden Villa": 3,
+                                                "Garden Villa 1": 3,
+                                                "Garden Villa 2": 3, 
+                                                "Garden Villa 3": 3, 
+                                                "Garden Villa 4": 3, 
+                                                "Garden Villa 5": 3, 
+
+                                                "Garden Pool Villa 1": 3,
+                                                "Garden Pool Villa 2": 3,
+                                                "Garden Pool Villa 3": 3,
+                                                "Garden Pool Villa 4": 3,
+                                                "Garden Pool Villa 5": 3,
+                                                "Garden Pool Villa 6": 3
+                                            }
+                                        - If stay is LESS than Minimun night stay nights:
                                         → ONLY respond with:
-                                            "The minimum stay requirement is 7 nights."
-                                            then from from tools response suggest 7 nights to calclute 7 day from check-in date to next 7 day
+                                            "The minimum stay requirement is Minimun night stay nights."
+                                            then from from tools response suggest Minimun night stay nights to calclute Minimun night stay day from check-in date to next Minimun night stay day
                                             and Response Format and Booking Link format
 
-                                        - If stay is 7 nights or MORE:
+                                        - If stay is Minimun night stay nights or MORE:
                                         → Show available villas normally
 
                                         2. Availability:
