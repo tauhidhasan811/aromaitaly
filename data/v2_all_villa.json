@@ -39,7 +39,7 @@
             "permit": "0845561008563",
             "roomChargeDisplay": "onePerBooking",
             "templates": {
-                "template1": "",
+                "template1": "[PROPERTYTEMPLATE1]",
                 "template2": "",
                 "template3": "",
                 "template4": "",
@@ -148,7 +148,7 @@
                 },
                 {
                     "number": 2,
-                    "phrase": "MARKU01,CHRIS01,MADLI01,MONIK01,CHRIS02",
+                    "phrase": "MultipleB",
                     "discount": 5,
                     "type": "percent"
                 },
@@ -184,9 +184,9 @@
                 },
                 {
                     "number": 8,
-                    "phrase": "",
-                    "discount": 5,
-                    "type": "notUsed"
+                    "phrase": "TEST99",
+                    "discount": 99,
+                    "type": "percent"
                 }
             ],
             "featureCodes": [],
@@ -349,22 +349,22 @@
                     "id": 334679,
                     "propertyId": 150956,
                     "name": "Beachfront Villa",
-                    "roomType": "double",
+                    "roomType": "villa",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
-                    "maxPeople": 4,
-                    "maxAdult": 4,
-                    "maxChildren": 2,
+                    "maxPeople": 8,
+                    "maxAdult": 8,
+                    "maxChildren": 6,
                     "taxPercentage": 0,
                     "taxPerson": 0,
-                    "rackRate": 11000,
+                    "rackRate": 14000,
                     "cleaningFee": 0,
                     "securityDeposit": 5000,
                     "sellPriority": 20,
-                    "roomSize": 60,
+                    "roomSize": 90,
                     "highlightColor": "ffffff",
                     "includeInReports": true,
                     "overbookingProtection": "property",
@@ -494,17 +494,36 @@
                             "POOL"
                         ],
                         [
+                            "BEDROOMS_3"
+                        ],
+                        [
+                            "DIRECT_SEAVIEW"
+                        ],
+                        [
+                            "BEDROOM",
+                            "BED_KING"
+                        ],
+                        [
+                            "BEDROOM_LIVING_SLEEPING_COMBO",
+                            "BED_SOFA"
+                        ],
+                        [
+                            "BEDROOM",
+                            "BED_QUEEN"
+                        ],
+                        [
+                            "BEDROOM",
+                            "BED_QUEEN"
+                        ],
+                        [
                             "BATHROOM",
                             "BATH_SHOWER",
                             "BATH_TOILET"
                         ],
                         [
-                            "BEDROOM",
-                            "BED_DOUBLE"
-                        ],
-                        [
-                            "BEDROOM_LIVING_SLEEPING_COMBO",
-                            "BED_SOFA"
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
                         ]
                     ]
                 },
@@ -515,7 +534,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 6,
@@ -665,6 +684,12 @@
                             "RECEPTION"
                         ],
                         [
+                            "WIFI"
+                        ],
+                        [
+                            "DIRECT_SEAVIEW"
+                        ],
+                        [
                             "BEDROOM",
                             "BED_KING"
                         ],
@@ -673,7 +698,11 @@
                             "BED_SOFA"
                         ],
                         [
-                            "WIFI"
+                            "BEDROOM",
+                            "BED_KING"
+                        ],
+                        [
+                            "BEDROOMS_2"
                         ]
                     ]
                 },
@@ -684,7 +713,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -843,6 +872,12 @@
                             "BATHROOM",
                             "BATH_SHOWER",
                             "BATH_TOILET"
+                        ],
+                        [
+                            "PARTIAL_SEAVIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
                         ]
                     ]
                 },
@@ -853,7 +888,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -1018,6 +1053,12 @@
                             "BATHROOM",
                             "BATH_SHOWER",
                             "BATH_TOILET"
+                        ],
+                        [
+                            "PARTIAL_SEAVIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
                         ]
                     ]
                 },
@@ -1028,19 +1069,19 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
-                    "maxPeople": 4,
-                    "maxAdult": 4,
-                    "maxChildren": 2,
+                    "maxPeople": 6,
+                    "maxAdult": 6,
+                    "maxChildren": 3,
                     "taxPercentage": 0,
                     "taxPerson": 0,
                     "rackRate": 9000,
                     "cleaningFee": 0,
                     "securityDeposit": 5000,
                     "sellPriority": 16,
-                    "roomSize": null,
+                    "roomSize": 65,
                     "highlightColor": "ffffff",
                     "includeInReports": true,
                     "overbookingProtection": "property",
@@ -1182,6 +1223,17 @@
                             "POOL"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "GARDEN_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
                             "BED_KING"
                         ],
@@ -1190,9 +1242,8 @@
                             "BED_SOFA"
                         ],
                         [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
+                            "BEDROOM",
+                            "BED_QUEEN"
                         ]
                     ]
                 },
@@ -1203,7 +1254,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -1357,17 +1408,23 @@
                             "POOL"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "PARTIAL_SEAVIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
                             "BED_KING"
                         ],
                         [
-                            "BEDROOM_LIVING_SLEEPING_COMBO",
-                            "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
+                            "BEDROOM",
+                            "BED_QUEEN"
                         ]
                     ]
                 },
@@ -1378,12 +1435,12 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 0,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
                     "maxAdult": 4,
-                    "maxChildren": 2,
+                    "maxChildren": 3,
                     "taxPercentage": 0,
                     "taxPerson": 0,
                     "rackRate": 9000,
@@ -1444,7 +1501,7 @@
                             "language": "en",
                             "displayName": "",
                             "accommodationType": "villa",
-                            "roomDescription": "<br /><br />Enjoy the wonderful view and quietness of our well-kept tropical garden.<br />All the interior and outdoor furniture and decorations were chosen thoughtfully by our interior designer, so the blend of Thai authenticity and modern comfort allows a perfect stay.<br />These one bedroom Villa comes with a king-size bed and no living room area.<br /><br /><span style=\"font-size:11px;\"><em>Dec/Jan/Feb/Mar/Jul/Ago minimum stay 7 nights<br />Apr/May/Jun/Sep/Oct/Nov minimum stay 5 nights<br />* no sofa bed available for this Villa</em></span><br />&nbsp;",
+                            "roomDescription": "<br><br>Enjoy the wonderful view and quietness of our well-kept tropical garden.<br>All the interior and outdoor furniture and decorations were chosen thoughtfully by our interior designer, so the blend of Thai authenticity and modern comfort allows a perfect stay.<br>These one bedroom Villa comes with a king-size bed and no living room area. There are no sofa beds in this villa, since there is only an outdoor living room.<br><br><span style=\"font-size:11px;\"><em>Dec/Jan/Feb/Mar/Jul/Ago minimum stay 7 nights<br>Apr/May/Jun/Sep/Oct/Nov minimum stay 5 nights<br>* no sofa bed available for this Villa</em></span><br>\u00a0",
                             "auxiliary": "",
                             "marketing": "",
                             "contentHeadline": "",
@@ -1526,13 +1583,23 @@
                             "POOL"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "PARTIAL_SEAVIEW"
+                        ],
+                        [
+                            "BEDROOMS_2"
+                        ],
+                        [
                             "BEDROOM",
                             "BED_KING"
                         ],
                         [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
+                            "BEDROOM",
+                            "BED_QUEEN"
                         ]
                     ]
                 },
@@ -1543,7 +1610,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 2000,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -1736,17 +1803,23 @@
                             "RECEPTION"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "POOL_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
-                            "BED_DOUBLE"
+                            "BED_QUEEN"
                         ],
                         [
                             "BEDROOM_LIVING_SLEEPING_COMBO",
                             "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
                         ]
                     ]
                 },
@@ -1757,7 +1830,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 2000,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -1950,17 +2023,23 @@
                             "RECEPTION"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "POOL_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
-                            "BED_DOUBLE"
+                            "BED_QUEEN"
                         ],
                         [
                             "BEDROOM_LIVING_SLEEPING_COMBO",
                             "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
                         ]
                     ]
                 },
@@ -1971,7 +2050,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 2000,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -2164,17 +2243,23 @@
                             "RECEPTION"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "POOL_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
-                            "BED_DOUBLE"
+                            "BED_QUEEN"
                         ],
                         [
                             "BEDROOM_LIVING_SLEEPING_COMBO",
                             "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
                         ]
                     ]
                 },
@@ -2185,7 +2270,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 2000,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -2378,17 +2463,23 @@
                             "RECEPTION"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "POOL_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
-                            "BED_DOUBLE"
+                            "BED_QUEEN"
                         ],
                         [
                             "BEDROOM_LIVING_SLEEPING_COMBO",
                             "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
                         ]
                     ]
                 },
@@ -2399,7 +2490,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 2000,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -2592,17 +2683,23 @@
                             "RECEPTION"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "POOL_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
-                            "BED_DOUBLE"
+                            "BED_QUEEN"
                         ],
                         [
                             "BEDROOM_LIVING_SLEEPING_COMBO",
                             "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
                         ]
                     ]
                 },
@@ -2613,7 +2710,7 @@
                     "roomType": "double",
                     "qty": 1,
                     "minPrice": 2000,
-                    "minStay": 3,
+                    "minStay": 2,
                     "maxStay": 365,
                     "restrictionStrategy": "stayThrough",
                     "maxPeople": 4,
@@ -2806,114 +2903,25 @@
                             "RECEPTION"
                         ],
                         [
+                            "BATHROOM",
+                            "BATH_SHOWER",
+                            "BATH_TOILET"
+                        ],
+                        [
+                            "POOL_VIEW"
+                        ],
+                        [
+                            "BEDROOMS_1"
+                        ],
+                        [
                             "BEDROOM",
-                            "BED_DOUBLE"
+                            "BED_QUEEN"
                         ],
                         [
                             "BEDROOM_LIVING_SLEEPING_COMBO",
                             "BED_SOFA"
-                        ],
-                        [
-                            "BATHROOM",
-                            "BATH_SHOWER",
-                            "BATH_TOILET"
                         ]
                     ]
-                },
-                {
-                    "id": 642098,
-                    "propertyId": 150956,
-                    "name": "Room 14",
-                    "roomType": "double",
-                    "qty": 1,
-                    "minPrice": 0,
-                    "minStay": null,
-                    "maxStay": 365,
-                    "restrictionStrategy": "stayThrough",
-                    "maxPeople": 2,
-                    "maxAdult": null,
-                    "maxChildren": null,
-                    "taxPercentage": 0,
-                    "taxPerson": 0,
-                    "rackRate": 0,
-                    "cleaningFee": 0,
-                    "securityDeposit": 0,
-                    "sellPriority": 5,
-                    "roomSize": null,
-                    "highlightColor": "ffffff",
-                    "includeInReports": true,
-                    "overbookingProtection": "room",
-                    "blockAfterCheckOutDays": 0,
-                    "controlPriority": 5,
-                    "dependencies": {
-                        "includeSubDependencies": false,
-                        "combinationLogic": {
-                            "type": "sumAllBookings"
-                        },
-                        "dependentRoomId1": null,
-                        "dependentRoomId2": null,
-                        "dependentRoomId3": null,
-                        "dependentRoomId4": null,
-                        "dependentRoomId5": null,
-                        "dependentRoomId6": null,
-                        "dependentRoomId7": null,
-                        "dependentRoomId8": null,
-                        "dependentRoomId9": null,
-                        "dependentRoomId10": null,
-                        "dependentRoomId11": null,
-                        "dependentRoomId12": null,
-                        "includeBookingsRoomId1": null,
-                        "includeBookingsRoomId2": null,
-                        "includeBookingsRoomId3": null,
-                        "includeBookingsRoomId4": null,
-                        "includeBookingsRoomId5": null,
-                        "includeBookingsRoomId6": null,
-                        "includeBookingsRoomId7": null,
-                        "includeBookingsRoomId8": null,
-                        "includeBookingsRoomId9": null,
-                        "includeBookingsRoomId10": null,
-                        "includeBookingsRoomId11": null,
-                        "includeBookingsRoomId12": null,
-                        "assignBookingsTo": {
-                            "type": "thisRoom"
-                        }
-                    },
-                    "templates": {
-                        "template1": "",
-                        "template2": "",
-                        "template3": "",
-                        "template4": "",
-                        "template5": "",
-                        "template6": "",
-                        "template7": "",
-                        "template8": ""
-                    },
-                    "texts": [
-                        {
-                            "language": "en",
-                            "displayName": "",
-                            "accommodationType": "room",
-                            "roomDescription": "",
-                            "auxiliary": "",
-                            "marketing": "",
-                            "contentHeadline": "",
-                            "contentDescription": ""
-                        }
-                    ],
-                    "unitAllocation": "perBooking",
-                    "unallocatedUnit": {
-                        "name": "Unallocated"
-                    },
-                    "units": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "statusText": "",
-                            "statusColor": null,
-                            "notes": ""
-                        }
-                    ],
-                    "featureCodes": []
                 }
             ]
         },

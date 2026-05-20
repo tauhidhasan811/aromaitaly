@@ -2,6 +2,8 @@ from langchain.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import PromptTemplate
 
 def RAGPrompt(user_query, previous_information, relevant_information):
+    
+                # <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>
     sys_message = SystemMessage(
         content="""
             You are a helpful RAG-based customer support assistant for Joy Beach Villas.
@@ -15,7 +17,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
                 <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}" target="_blank">{name}</a>
             
             6. If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
-                <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>
+                <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}?startDate={yyyymmdd}&endDate={yyyymmdd}&numAdult={number_of_adults}&numChild={number_of_children}&nights={number_of_nights}&currency=THB" target="_blank">Book {name}</a>
 
             Behavior rules:
             - Always prioritize the user's current question.
