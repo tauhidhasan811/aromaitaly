@@ -14,7 +14,6 @@ description = f"""
         Check room availability by room IDs and date interval.
         room_ids come from previous information, dates come from user in YYYY-MM-DD format.
         Current date is {today}.
-        if numAdult and numChild is not provided then assume 2 adult and 0 child.
         If user does not provide date, check availability from {tomorrow} to {end} and ask their preferred dates.
         if user give check-in and check-out date then just take the check in date and check-out date will be chech-out + 10 dayscheck availability
     """
