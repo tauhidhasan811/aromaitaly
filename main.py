@@ -257,7 +257,7 @@ async def Check(data : ChatBody):
                                         - Use clean HTML (<p>, <ul>, <li>)
 
                                         4. Booking Link:
-                                        <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">
+                                        <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}?startDate={yyyymmdd}&endDate={yyyymmdd}&numAdult={number_of_adults}&numChild={number_of_children}&nights={number_of_nights}&currency=THB" target="_blank">Book {name}</a>
                                         Book {name}
                                         </a>"""
             

@@ -38,8 +38,6 @@ def RAGPrompt(user_query, previous_information, relevant_information):
             - Do not include markdown.
             - Do not include explanations outside HTML.
 
-
-            
             - Only generate this link if both dates are available.
             - If one or both dates are missing, ask the user for the missing date(s) instead of generating the link.
 
