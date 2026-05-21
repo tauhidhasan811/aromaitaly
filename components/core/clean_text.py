@@ -20,7 +20,7 @@ def clean_previous_text(text):
 def SelectedPreviousData(prev_info): 
     split_data = prev_info.split('user_query')
     selected_data = ""
-    minimun_stack = 5
+    minimun_stack = 20
     current_stack = 0
     for sp_data in reversed(split_data):
         print('-' * 80)
@@ -28,7 +28,7 @@ def SelectedPreviousData(prev_info):
         if len(sp_data) > 0:
             sp_data = "user_query: "+ sp_data
             sp_data = clean_previous_text(sp_data)
-        if len(selected_data) < 1000:
+        if len(selected_data) < 2000:
             selected_data += sp_data
             print(f"if working && current content len: {len(selected_data)}")
             # print(selected_data)

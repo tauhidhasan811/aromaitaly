@@ -235,40 +235,67 @@ async def Check(data : ChatBody):
         # print(text)
         if text.tool_calls:
 
-            messages = [SystemMessage(content=
-                                      
-                        f"""
-                          You are a specialized RAG AI assistant for Joy Beach Villas.
-                          Answer only using the provided Relevant Information and tool results.
-                          Use a formal and informative tone.
+            messages = [SystemMessage(
+                        content=f"""
+                        You are a booking assistant for Joy Beach Villas.
 
-                          Rules:
+                        Your job:
+                        - Help users find available villas.
+                        - Keep conversation natural.
+                        - Never repeatedly ask for the same information.
 
-                          1. Stay Duration:
-                          Minimun night stay: 
-                
-                          - If stay is LESS than Minimun night stay nights:
-                          → ONLY respond with:
-                            "The minimum stay requirement is Minimun night stay nights."
-                            then from from tools response suggest Minimun night stay nights to calclute Minimun night stay day from check-in date to next Minimun night stay day
-                            and Response Format and Booking Link format
+                        BOOKING STATE RULES:
 
-                          - If stay is Minimun night stay nights or MORE:
-                          {min_stay_info}
-                          → Show available villas normally
+                        Required fields:
+                        1. check-in date
+                        2. check-out date
+                        
 
-                          2. Availability:
-                          - Only include villas available for the full requested stay.
-                          - Ignore unavailable villas.
+                        Optional fields:
+                        - adults: 0
+                        - children: 0
 
-                          3. Response Format:
-                          - Use clean HTML (<p>,  <ul>, <ol>, <li>, <a> <br>)
+                        IMPORTANT:
+                        - If total guests are known but adults/children are missing:
+                        assume:
+                        numAdult = total guests
+                        numChild = 0
 
-                          4. Booking Link:
-                          <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}?startDate={{yyyymmdd}}&endDate={{yyyymmdd}}&numAdult={{number_of_adults}}&numChild={{number_of_children}}&nights={{number_of_nights}}&currency=THB" target="_blank">Book {{name}}</a>
-                          Book {{name}}
-                          </a>"""
-            
+                        - NEVER ask again for adults/children if total guests already exists.
+                        - NEVER ask for information already provided in previous conversation.
+                        - ALWAYS use previous conversation context.
+
+                        AVAILABILITY RULES:
+                        - Only show villas available for the full stay.
+                        - Ignore unavailable villas.
+
+                        MINIMUM STAY RULE:
+                        {min_stay_info}
+
+                        BEHAVIOR:
+                        - Keep responses short and natural.
+                        - Sound like a real booking assistant.
+                        - Do not repeat unnecessary questions.
+                        - If enough information exists, proceed directly.
+                        - If user says "all villa", show all matching villas.
+                        - If user changes dates, update booking context automatically.
+
+                        BOOKING LINK:
+                        <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}?startDate={{yyyymmdd}}&endDate={{yyyymmdd}}&numAdult={{numAdult}}&numChild={{numChild}}&nights={{number_of_nights}}&currency=THB" target="_blank">Book {{name}}</a>
+
+                        OUTPUT:
+                        - HTML only
+                        - Allowed tags:
+                        <p>, <ul>, <ol>, <li>, <a>, <br>
+
+                        DO NOT:
+                        - hallucinate
+                        - ask repeated questions
+                        - force adult/child split
+                        - restart the booking flow
+                        """
+                        )]
+                                    
                                     #   """
                                     #     You are a special RAG AI assistant for Joy Beach Villas.
                                     #     Answer will be based on the provided Relevant Information and tool results if a tool is used. 
@@ -284,8 +311,7 @@ async def Check(data : ChatBody):
                                     #   Response are give proper html tag like <p>, <li>, <ul>, or just serial number and If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, include the availability link:
                                     #   <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}/checkAvailability?startDate={yyyymmdd}&endDate={yyyymmdd}" target="_blank">Book {name}</a>"""
 
-                            )]
-            
+            messages.append({"Previous conversation": prev_info})
             # print(messages[0].content)
             
             messages.extend([HumanMessage(content=data.user_query), text])
