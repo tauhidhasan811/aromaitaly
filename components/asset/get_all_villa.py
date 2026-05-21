@@ -193,7 +193,7 @@ def GetAllVilla():
     v2_json_data = response.json()
     # with open("data/v2_all_villa.json", 'w', encoding='utf-8') as f:
     #     json.dump(v2_json_data, f, indent=4)
-    print(v2_json_data)
+    # print(v2_json_data)
     villa_info = []
     fields = [
                 "name", "id", "currency", "address", "city", "state",
@@ -360,3 +360,43 @@ def GetPriceAllVilla():
         }
         for field, values in field_lists.items()
     ]
+
+
+def GetMinimumStayAllVilla():
+
+
+    # header = {'token': 'WtDtBTbjXXe2HwsPURQ6xbJbNfn9DIW3/FCiQ902mz039qCZRfcnCpkD7dX67vOAE5i0CqhG+Zx0oVUvpLVuxBqnapzXWqqfXpb3hJyRfsq1/rTxikxk5mAQ1U1mM3bIuKMEA7DCPlzmPV32hyV96g=='}
+    token = os.environ.get('ACCESS_TOKEN_AI')
+    header = {'token': token}
+
+    url = 'https://www.beds24.com/api/v2/properties?includeTexts=all&includeAllRooms=true'
+
+    response = requests.get(url, headers=header)
+    v2_json_data = response.json()
+    
+
+
+    min_stay_data = {}
+
+
+ 
+    for proper_data in v2_json_data['data']:
+        # print("-" * 60)
+        # print(" " * 25, proper_data['name'])
+        # print("-" * 60)
+            # villa_info, file = beds24.GetRoomInformation(property_name=proper)
+            
+            # print(missed_villaInfo)
+        for room_data in proper_data['roomTypes']:
+            # print(room_data)
+            # for room_key, room_value in room_data.items():
+            #     print(room_key, room_value)
+            # room = {"proparty": proper_data['name']}
+            if room_data.get('id') == 642098 or room_data.get('id') == 337089:
+                    continue
+            value = room_data.get("minStay")
+
+            # then rename only the output key
+            min_stay_data.update({room_data['name']: value})
+
+    return min_stay_data
