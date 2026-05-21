@@ -12,6 +12,7 @@ end = tomorrow + datetime.timedelta(days=30)
 
 description = f"""
         Check room availability by room IDs and date interval.
+        And Year is {today.year}
         room_ids come from previous information, dates come from user in YYYY-MM-DD format.
         Current date is {today}.
         If user does not provide date, check availability from {tomorrow} to {end} and ask their preferred dates.

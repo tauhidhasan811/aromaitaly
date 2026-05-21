@@ -1,5 +1,7 @@
 from langchain.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import PromptTemplate
+from datetime import datetime
+today = datetime.today().date()
 
 def RAGPrompt(user_query, previous_information, relevant_information):
     
@@ -57,7 +59,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
     # )
 
     sys_message = SystemMessage(
-    content="""
+    content=f"""
         You are a helpful RAG-based customer support assistant for Joy Beach Villas.
 
         Your task is to answer the user's question using only:
@@ -70,17 +72,18 @@ def RAGPrompt(user_query, previous_information, relevant_information):
         - Before asking for ANY information, check the previous conversation carefully.
         - If the user already answered a question (even with "no", "none", "0", "just me"), 
           treat that as the answer. DO NOT ask again.
-        - "no adult or child" = numAdult=1, numChild=0 (assume at least 1 traveler)
+        - "no adult or child" = numAdult=2, numChild=0 (assume at least 1 traveler)
         - "no children" = numChild=0, do not ask again
+        if for check in year do not mension consider year is current year :"And Year is {today.year}
         - If dates AND guest count are both known from context, go directly to the booking link.
 
         BOOKING LINK RULES:
         5. If a specific villa is mentioned and name + roomId are available:
-           <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}" target="_blank">{name}</a>
+           <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}" target="_blank">{name}</a>
 
         6. If dates are known AND guest count is known (from current or previous messages):
            Generate the booking link immediately:
-           <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}?startDate={yyyymmdd}&endDate={yyyymmdd}&numAdult={numAdult}&numChild={numChild}&nights={nights}&currency=THB" target="_blank">Book {name}</a>
+           <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}?startDate={{startDate}}&endDate={{endDate}}&numAdult={{numAdult}}&numChild={{numChild}}&nights={{nights}}&currency=THB" target="_blank">Book {{name}}</a>
 
         7. If dates are known but guest count is NOT mentioned anywhere in the conversation:
            Ask ONCE for guest count. After the user replies, never ask again.
