@@ -68,6 +68,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
         3. the provided relevant information.
         4. Tone: warm, helpful customer support. Encourage booking naturally.
 
+
         CRITICAL CONTEXT RULES — READ FIRST:
         - Before asking for ANY information, check the previous conversation carefully.
         - If the user already answered a question (even with "no", "none", "0", "just me"), 
@@ -77,9 +78,11 @@ def RAGPrompt(user_query, previous_information, relevant_information):
         if for check in year do not mension consider year is current year :"And Year is {today.year}
         - If dates AND guest count are both known from context, go directly to the booking link.
 
-        BOOKING LINK RULES:
-        5. If a specific villa is mentioned and name + roomId are available:
+
+        5. When you tell about a specific villa/property, if both property name and roomId are available in the relevant information, include a villa link in this format:
            <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}" target="_blank">{{name}}</a>
+           
+        BOOKING LINK RULES:
 
         6. If dates are known AND guest count is known (from current or previous messages):
            Generate the booking link immediately:
