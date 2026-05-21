@@ -79,7 +79,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
 
         BOOKING LINK RULES:
         5. If a specific villa is mentioned and name + roomId are available:
-           <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}" target="_blank">{name}</a>
+           <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}" target="_blank">{{name}}</a>
 
         6. If dates are known AND guest count is known (from current or previous messages):
            Generate the booking link immediately:

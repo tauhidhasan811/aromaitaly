@@ -299,7 +299,7 @@ async def Check(data : ChatBody):
                         """
                         )]
                               
-            messages.append({"Previous conversation": prev_info})
+            messages.append(f"Previous conversation: {prev_info}")
             # print(messages[0].content)
             
             messages.extend([HumanMessage(content=data.user_query), text])
@@ -315,6 +315,8 @@ async def Check(data : ChatBody):
                         tool_call_id=tool_call["id"]
                     )
                 )
+            
+            print(messages)
             text = model.invoke(messages)
 
         text = clean_text(text.content)
