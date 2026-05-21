@@ -14,7 +14,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
             3. the provided relevant information.
             4. you tone like a customer support and try to convert the user to customer and try to tell book .
             5. If the answer mentions a specific villa/property and both property name and roomId are available in the relevant information, include a villa link in this format:
-                <a href="https://armaitoly-website.vercel.app/property/{name}/{roomId}" target="_blank">{name}</a>
+                <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}" target="_blank">{name}</a>
             
             6. If the answer mentions availability or check-in/check-out dates, and the property name and roomId are available, that time also ask them about the Number of guest/numAdult and Number of children (numChild) or also get those data from previous chat include the availability link:
                 <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}?startDate={yyyymmdd}&endDate={yyyymmdd}&numAdult={number_of_adults}&numChild={number_of_children}&nights={number_of_nights}&currency=THB" target="_blank">Book {name}</a>
