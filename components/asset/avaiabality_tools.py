@@ -47,6 +47,6 @@ def check_availability(room_ids: List[int], start_date: date, end_date: date):
             "message": response.text
         }
     data = response.json()
-    with open('data/avaiablity.json', 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)
+    # with open('data/avaiablity.json', 'w', encoding='utf-8') as f:
+    #     json.dump(data, f, indent=4)
     return response.json()

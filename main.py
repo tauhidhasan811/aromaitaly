@@ -316,7 +316,7 @@ async def Check(data : ChatBody):
                     )
                 )
             
-            print(messages)
+            # print(messages)
             text = model.invoke(messages)
 
         text = clean_text(text.content)
