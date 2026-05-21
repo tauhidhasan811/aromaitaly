@@ -34,7 +34,7 @@ def RAGPrompt(user_query, previous_information, relevant_information):
 
             Output format rules:
             - Return the final answer in simple HTML only.
-            - Allowed tags: <p>, <span>, <ul>, <ol>, <li>, <a>, <strong>, <br>
+            - Allowed tags: <p>,  <ul>, <ol>, <li>, <a> <br>
             - Do not include markdown.
             - Do not include explanations outside HTML.
 

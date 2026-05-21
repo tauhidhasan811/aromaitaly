@@ -17,7 +17,7 @@ from components.core.store_chunk import StoreChunk
 from components.config.openai_model import LoadGPT
 from components.core.rag_prompt import RAGPrompt
 from schema.chat_model import ChatBody
-from components.asset.get_all_villa import GetAllVilla
+from components.asset.get_all_villa import GetAllVilla, GetMinimumStayAllVilla
 from components.core.clean_chunk_doc import format_retrieved_context, CleanVillaData
 from components.hyperparms import params
 from components.core.delete_path import force_delete_folder
@@ -112,9 +112,15 @@ async def update_knowledge(file: Optional[UploadFile]= File(None)):
         )
         room_info = GetAllVilla()
 
+        # min_stay_info = GetMinimumStayAllVilla()
+        # print(min_stay_info)
+        # with open('data/min_stay_info.json', 'w', encoding='utf-8') as f:
+        #     json.dump(min_stay_info, f, indent=4)
 
-        # with open('data/all_villa.json', 'w', encoding='utf-8') as f:
-        #     json.dump(room_info, f, indent=4)
+        
+
+        with open('data/all_villa_without_clean.json', 'w', encoding='utf-8') as f:
+            json.dump(room_info, f, indent=4)
 
 
         # print(room_info)
@@ -122,10 +128,10 @@ async def update_knowledge(file: Optional[UploadFile]= File(None)):
         room_info = CleanVillaData(room_info)
 
 
-        # with open('data/all_villa.json', 'w', encoding='utf-8') as f:
-        #     json.dump(room_info, f, indent=4)
+        with open('data/all_villa_clean.json', 'w', encoding='utf-8') as f:
+            json.dump(room_info, f, indent=4)
 
-        
+        # return
 
         chunks.extend(room_info)
 
@@ -221,55 +227,47 @@ async def Check(data : ChatBody):
                         relevant_information=context)
 
         text = model.invoke(prompt)
+
+        min_stay_info = GetMinimumStayAllVilla()
+        print(min_stay_info)
+        # with open('data/min_stay_info.json', 'w', encoding='utf-8') as f:
+        #     json.dump(min_stay_info, f, indent=4)
         # print(text)
         if text.tool_calls:
 
             messages = [SystemMessage(content=
-                                      """
-                                        You are a specialized RAG AI assistant for Joy Beach Villas.
-                                        Answer only using the provided Relevant Information and tool results.
-                                        Use a formal and informative tone.
+                                      
+                        f"""
+                          You are a specialized RAG AI assistant for Joy Beach Villas.
+                          Answer only using the provided Relevant Information and tool results.
+                          Use a formal and informative tone.
 
-                                        Rules:
+                          Rules:
 
-                                        1. Stay Duration:
-                                        Minimun night stay: 
-                                            {
-                                                "Beachfront Villa": 3,
-                                                "Deluxe Garden Villa": 3,
-                                                "Garden Villa 1": 3,
-                                                "Garden Villa 2": 3, 
-                                                "Garden Villa 3": 3, 
-                                                "Garden Villa 4": 3, 
-                                                "Garden Villa 5": 3, 
+                          1. Stay Duration:
+                          Minimun night stay: 
+                
+                          - If stay is LESS than Minimun night stay nights:
+                          → ONLY respond with:
+                            "The minimum stay requirement is Minimun night stay nights."
+                            then from from tools response suggest Minimun night stay nights to calclute Minimun night stay day from check-in date to next Minimun night stay day
+                            and Response Format and Booking Link format
 
-                                                "Garden Pool Villa 1": 3,
-                                                "Garden Pool Villa 2": 3,
-                                                "Garden Pool Villa 3": 3,
-                                                "Garden Pool Villa 4": 3,
-                                                "Garden Pool Villa 5": 3,
-                                                "Garden Pool Villa 6": 3
-                                            }
-                                        - If stay is LESS than Minimun night stay nights:
-                                        → ONLY respond with:
-                                            "The minimum stay requirement is Minimun night stay nights."
-                                            then from from tools response suggest Minimun night stay nights to calclute Minimun night stay day from check-in date to next Minimun night stay day
-                                            and Response Format and Booking Link format
+                          - If stay is Minimun night stay nights or MORE:
+                          {min_stay_info}
+                          → Show available villas normally
 
-                                        - If stay is Minimun night stay nights or MORE:
-                                        → Show available villas normally
+                          2. Availability:
+                          - Only include villas available for the full requested stay.
+                          - Ignore unavailable villas.
 
-                                        2. Availability:
-                                        - Only include villas available for the full requested stay.
-                                        - Ignore unavailable villas.
+                          3. Response Format:
+                          - Use clean HTML (<p>,  <ul>, <ol>, <li>, <a> <br>)
 
-                                        3. Response Format:
-                                        - Use clean HTML (<p>, <ul>, <li>)
-
-                                        4. Booking Link:
-                                        <a href="https://aromaitaly.monirhrabby.com/property/{name}/{roomId}?startDate={yyyymmdd}&endDate={yyyymmdd}&numAdult={number_of_adults}&numChild={number_of_children}&nights={number_of_nights}&currency=THB" target="_blank">Book {name}</a>
-                                        Book {name}
-                                        </a>"""
+                          4. Booking Link:
+                          <a href="https://aromaitaly.monirhrabby.com/property/{{name}}/{{roomId}}?startDate={{yyyymmdd}}&endDate={{yyyymmdd}}&numAdult={{number_of_adults}}&numChild={{number_of_children}}&nights={{number_of_nights}}&currency=THB" target="_blank">Book {{name}}</a>
+                          Book {{name}}
+                          </a>"""
             
                                     #   """
                                     #     You are a special RAG AI assistant for Joy Beach Villas.
@@ -288,12 +286,14 @@ async def Check(data : ChatBody):
 
                             )]
             
+            # print(messages[0].content)
+            
             messages.extend([HumanMessage(content=data.user_query), text])
 
             for tool_call in text.tool_calls:
                 # print(check_availability.description)
                 tool_res = check_availability.invoke(tool_call["args"])
-                print(tool_res)
+                # print(tool_res)
 
                 messages.append(
                     ToolMessage(

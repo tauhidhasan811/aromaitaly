@@ -29,7 +29,7 @@ def CleanVillaData(data: list):
     pattern = re.compile(r"[\[\]\{\}']")
 
     for item in data:
-        print(item)
+        # print(item)
         text = str(item)
         clean_data.append(text)
         cleaned = pattern.sub("", text)
