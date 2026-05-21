@@ -111,9 +111,19 @@ async def update_knowledge(file: Optional[UploadFile]= File(None)):
                     }
         )
         room_info = GetAllVilla()
+
+
+        # with open('data/all_villa.json', 'w', encoding='utf-8') as f:
+        #     json.dump(room_info, f, indent=4)
+
+
         # print(room_info)
         # room_info = re.sub(r"[\[\]']", "", room_info)
         room_info = CleanVillaData(room_info)
+
+
+        # with open('data/all_villa.json', 'w', encoding='utf-8') as f:
+        #     json.dump(room_info, f, indent=4)
 
         
 

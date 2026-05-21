@@ -191,8 +191,8 @@ def GetAllVilla():
 
     response = requests.get(url, headers=header)
     v2_json_data = response.json()
-    with open("data/v2_all_villa.json", 'w', encoding='utf-8') as f:
-        json.dump(v2_json_data, f, indent=4)
+    # with open("data/v2_all_villa.json", 'w', encoding='utf-8') as f:
+    #     json.dump(v2_json_data, f, indent=4)
     print(v2_json_data)
     villa_info = []
     fields = [
@@ -281,7 +281,7 @@ def GetAllVilla():
                     continue
                 # if room.get('id') == 337089 or room.get('id') == 642098:
                 #     continue
-                if room.get('id') == 642098:
+                if room.get('id') == 642098 or room.get('id') == 337089:
                     continue
 
                 new_field = field_map.get(field, field)
