@@ -102,6 +102,8 @@ def RAGPrompt(user_query, previous_information, relevant_information):
           <li>WhatsApp: <a href="https://wa.me/66624080324" target="_blank">Chat on WhatsApp</a></li>
           <li>Reception: 8 AM – 5 PM Thailand time</li>
         </ul>
+
+        Final remainder: Joy Beach Villas is a properly not a villa so do not Joy Beach Villas name instance of villa name during create urls
         """
     )
     # hum_message = HumanMessage(

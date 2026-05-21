@@ -293,6 +293,9 @@ async def Check(data : ChatBody):
                         - ask repeated questions
                         - force adult/child split
                         - restart the booking flow
+
+                         Final remainder: Joy Beach Villas is a properly not a villa so do not Joy Beach Villas name instance of villa name during create urls
+        
                         """
                         )]
                               
